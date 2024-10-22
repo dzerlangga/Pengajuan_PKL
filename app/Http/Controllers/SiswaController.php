@@ -22,4 +22,10 @@ class SiswaController extends Controller
         $data = Jurusan::get();
         return view('session.siswa.form',['jurusan'=>$data]);
     }
+
+    public function rekomendasi()
+    {
+        // $data = Jurusan::get();
+        return view('session.siswa.rekomendasi');
+    }
 }

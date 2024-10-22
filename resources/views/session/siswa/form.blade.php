@@ -1,83 +1,38 @@
 @extends('layouts.user_type.guest')
 
 @section('content')
-<style>
-    * {
-      box-sizing: border-box;
-    }
+<div class="container-siswa rounded">
 
-    body {
-      background-color: #f1f1f1;
-    }
+    {{-- MODAL --}}
+    <div class="modal fade" id="anggotaModal" aria-hidden="true" aria-labelledby="anggotaModalLabel" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="anggotaModalLabel">Tambah Anggota</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                <form id="formAnggota">
+                    <div class="mb-3">
+                      <label for="nama" class="form-label">Nama</label>
+                      <input type="text" name="nama" class="form-control input-anggota" id="nama" aria-describedby="namaHelp">
+                      <div id="namaHelp" class="form-text">Pastikan nama sudah benar</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="nis" class="form-label">NIS</label>
+                        <input type="text" name="nis" class="form-control input-anggota" id="nis" aria-describedby="nisHelp">
+                        <div id="nisHelp" class="form-text">Pastikan NIS sudah benar</div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn bg-gradient-success">Simpan</button>
+                </div>
+            </form>
+          </div>
+        </div>
+    </div>
+    {{-- END MODAL --}}
 
-    #regForm {
-      background-color: #ffffff;
-      margin: 100px auto;
-      font-family: Raleway;
-      padding: 40px;
-      width: 70%;
-      min-width: 300px;
-    }
-
-    h1 {
-      text-align: center;
-    }
-
-    input {
-      padding: 10px;
-      width: 100%;
-      font-size: 17px;
-      font-family: Raleway;
-      border: 1px solid #aaaaaa;
-    }
-
-    /* Mark input boxes that gets an error on validation: */
-    input.invalid {
-      background-color: #ffdddd;
-    }
-
-    /* Hide all steps by default: */
-    .tab {
-      display: none;
-    }
-
-    button {
-      background-color: #04AA6D;
-      color: #ffffff;
-      border: none;
-      padding: 10px 20px;
-      font-size: 17px;
-      font-family: Raleway;
-      cursor: pointer;
-    }
-
-    button:hover {
-      opacity: 0.8;
-    }
-
-    /* Make circles that indicate the steps of the form: */
-    .step {
-      height: 40px;
-      width: 40px;
-      margin: 0 10px;
-      background-color: #bbbbbb;
-      border: none;
-      border-radius: 50%;
-      display: inline-block;
-      opacity: 0.5;
-    }
-
-    .step.active {
-      opacity: 1;
-    }
-
-    /* Mark the steps that are finished and valid: */
-    .step.finish {
-      background-color: #FEAB06;
-      color: white
-    }
-    </style>
-<div class="container-siswa">
     <div class="text-center w-100">
         <div class="logo mt-6">
             <img src="{{ asset('assets/img/logos/yayasan.png') }}" height="98.86" class="mx-2" />
@@ -106,18 +61,98 @@
                   </select>
                 </div>
                     </div>
-                <div class="tab">Nama Anggota:
-                  <p><input placeholder="E-mail..." oninput="this.className = ''" name="email"></p>
-                  <p><input placeholder="Phone..." oninput="this.className = ''" name="phone"></p>
+                <div class="tab">
+                    <div class="card mb-4">
+                        <div class="card-header pb-0">
+                            <div class="d-flex flex-row justify-content-between">
+                                <div class="text-start">
+                                    <h6 class="mb-0">ANGGOTA PRAKTIK KERJA LAPANGAN</h6>
+                                </div>
+                                <a href="#" id="tambah_button" class="btn bg-gradient-success btn-sm mb-0" type="button" data-bs-target="#anggotaModal" data-bs-toggle="modal">+&nbsp; Tambah Anggota</a>
+                            </div>
+                        </div>
+                        <div class="card-body px-0 pt-0 pb-2">
+                            <div class="table-responsive p-0">
+                                <div class="w-100 text-start px-4">
+                                    <span class="text-danger text-start" style="font-size: 10px">*MAX ANGGOTA ADALAH 6 ORANG</span>
+                                </div>
+                                <table class="table align-items-center mb-0" id="table-anggota">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                NAMA
+                                            </th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                                NIS
+                                            </th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                                Aksi
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="body_table">
+                                        <tr id="empty-data"><td class="dataTables-empty" colspan="3">Belum ada anggota yang ditambah</td></tr>
+                                        {{-- <tr>
+                                            <td class="ps-4">
+                                                <p class="text-xs font-weight-bold mb-0">Deni RM</p>
+                                            </td>
+                                            <td class="text-center">
+                                                <p class="text-xs font-weight-bold mb-0">16102411186</p>
+                                            </td>
+                                            <td class="text-center">
+                                                <a href="#" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Edit user">
+                                                    <i class="fas fa-user-edit text-secondary"></i>
+                                                </a>
+                                                <span>
+                                                    <i class="cursor-pointer fas fa-trash text-secondary"></i>
+                                                </span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="ps-4">
+                                                <p class="text-xs font-weight-bold mb-0">Dandi ZE</p>
+                                            </td>
+                                            <td class="text-center">
+                                                <p class="text-xs font-weight-bold mb-0">16102411187</p>
+                                            </td>
+                                            <td class="text-center">
+                                                <a href="#" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Edit user">
+                                                    <i class="fas fa-user-edit text-secondary"></i>
+                                                </a>
+                                                <span>
+                                                    <i class="cursor-pointer fas fa-trash text-secondary"></i>
+                                                </span>
+                                            </td>
+                                        </tr> --}}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                  {{-- <p><input placeholder="E-mail..." oninput="this.className = ''" name="email"></p> --}}
+                  {{-- <p><input placeholder="Phone..." oninput="this.className = ''" name="phone"></p> --}}
                 </div>
-                <div class="tab">Nama Perusahaan:
-                  <p><input placeholder="dd" oninput="this.className = ''" name="dd"></p>
+                <div class="tab">
+                    <div class="form-group row">
+                        <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+                        <div class="col-sm-10">
+                          <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+                        <div class="col-sm-10">
+                          <input type="password" class="form-control" id="inputPassword">
+                        </div>
+                      </div>
+                    {{-- Nama Perusahaan: --}}
+                  {{-- <p><input placeholder="dd" oninput="this.className = ''" name="dd"></p>
                   <p><input placeholder="mm" oninput="this.className = ''" name="nn"></p>
-                  <p><input placeholder="yyyy" oninput="this.className = ''" name="yyyy"></p>
+                  <p><input placeholder="yyyy" oninput="this.className = ''" name="yyyy"></p> --}}
                 </div>
                 <div class="d-flex justify-content-end">
-                    <button type="button" class="btn-siswa btn-danger-siswa text-white fw-bold ms-1" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
-                    <button type="button" class="btn-siswa btn-siswa-disable btn-secondary-siswa text-white fw-bold ms-1" id="nextBtn" onclick="nextPrev(1)">Next</button>
+                    <button type="button" class="btn bg-gradient-info btn-sm ms-2" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+                    <button type="button" class="btn bg-gradient-secondary btn-siswa-disable btn-sm ms-2" id="nextBtn" onclick="nextPrev(1)">Next</button>
                 </div>
                 <!-- Circles which indicates the steps of the form: -->
 
@@ -126,26 +161,133 @@
     </div>
 </div>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <script>
-    let id_select_jurusan = document.getElementById('selectJurusan')
-    let btnNext = document.getElementById('nextBtn')
-    var currentTab = 0; // Current tab is set to be the first tab (0)
+    let id_select_jurusan = $('#selectJurusan');
+    let anggotaModal = $('#anggotaModal');
+    let form_anggota = $('#formAnggota');
+    let body_table = $('#body_table');
+    let table_anggota = $('#table-anggota');
+    let btnNext = document.getElementById('nextBtn');
+    let inputs = document.querySelectorAll('.input-anggota');
+    let id_jurusan = null
+    let data_anggota = []
+    var currentTab = 2; // Current tab is set to be the first tab (0)
     showTab(currentTab); // Display the current tab
     !localStorage.getItem("Read") && window.history.back() ;
 
-    id_select_jurusan.addEventListener("change", function() {
+    anggotaModal.on('hidden.bs.modal', function () {
+        inputs.forEach(function(input) {
+          input.value = ''; // Mengosongkan nilai elemen
+        });
+    })
+
+    form_anggota.on('submit', function (event) {
+        event.preventDefault();
+        let data = {
+            nama: '',
+            nis: ''
+        }
+        inputs.forEach(function(input) {
+            data[input.name] = input.value
+        });
+
+        if (data.nama === '' || data.nis === '') {
+                Swal.fire({
+                    title: 'Peringatan!',
+                    text: 'Data belum di masukan',
+                    icon: 'warning',
+                    confirmButtonText: 'Tutup'
+                    })
+                return
+            }
+
+        if (data_anggota.find(e=> e.nis === data.nis)) {
+            alert('nis telah tambahkan')
+            return
+        }
+        data_anggota = [...data_anggota, data]
+        button('next')
+        anggotaModal.modal('hide')
+        renderTable(data)
+    })
+
+    id_select_jurusan.on("change", function() {
+        id_jurusan = this.value
         if (this.value === "0") {
-            btnNext.classList.add('btn-secondary-siswa');
-            btnNext.classList.add('btn-siswa-disable');
-            btnNext.classList.remove('btn-primary-siswa');
+            button('next','disable')
         }else{
-            setTimeout(() => {
-                btnNext.classList.remove('btn-secondary-siswa');
-                btnNext.classList.remove('btn-siswa-disable');
-                btnNext.classList.add('btn-primary-siswa');
-            }, 200);
+            button('next')
         }
     });
+
+    // FUNTION DELETE ANGGOTA BY ROW
+    table_anggota.on('click', '.del-anggota', function() {
+        let nis = $(this).attr('id')
+        let filter = data_anggota.filter(e=> e.nis !== nis)
+        data_anggota = filter
+        var rowIndex = $(this).closest('tr').index();
+        $('#table-anggota tbody tr').eq(rowIndex).remove();
+        if (data_anggota.length < 6 ) button('add')
+        if (data_anggota.length === 0 ) {
+            $('#empty-data').show()
+            button('next', 'disable')
+        }
+    });
+
+    function button(type,condition) {
+        if (type?.includes('next')) {
+            if (condition?.includes('disable')) {
+                btnNext.classList.add('bg-gradient-secondary');
+                btnNext.classList.add('btn-siswa-disable');
+                btnNext.classList.remove('bg-gradient-info');
+                btnNext.classList.remove('bg-gradient-success');
+            }else if (condition?.includes('success')) {
+                btnNext.classList.remove('bg-gradient-info');
+                btnNext.classList.add('bg-gradient-success');
+            }else{
+                btnNext.classList.remove('bg-gradient-secondary');
+                btnNext.classList.remove('btn-siswa-disable');
+                btnNext.classList.add('bg-gradient-info');
+            }
+        }else if (type?.includes('add')) {
+            if (condition?.includes('disable')) {
+                $('#tambah_button').addClass('bg-gradient-secondary btn-siswa-disable')
+                $('#tambah_button').removeClass('bg-gradient-success')
+            }else{
+                $('#tambah_button').removeClass('bg-gradient-secondary btn-siswa-disable')
+                $('#tambah_button').addClass('bg-gradient-success')
+            }
+        }else{
+            return
+        }
+    }
+
+    function renderTable(table = null) {
+            $('#empty-data').hide()
+
+            body_table.append(`
+            <tr>
+                <td class="ps-4">
+                    <p class="text-xs font-weight-bold mb-0">${table.nama}</p>
+                </td>
+                <td class="text-center">
+                    <p class="text-xs font-weight-bold mb-0">${table.nis}</p>
+                </td>
+                <td class="text-center">
+                    <span class="del-anggota" id="${table.nis}">
+                        <i class="cursor-pointer fas fa-trash text-secondary"></i>
+                    </span>
+                </td>
+            </tr>
+            `)
+
+            if (data_anggota.length === 6) {
+                button('add','disable')
+            }
+    }
 
     function showTab(n) {
       // This function will display the specified tab of the form...
@@ -158,8 +300,14 @@
         document.getElementById("prevBtn").style.display = "inline";
       }
       if (n == (x.length - 1)) {
+        button('next','success')
         document.getElementById("nextBtn").innerHTML = "Submit";
       } else {
+        if (data_anggota.length === 0 && n == 1) {
+           button('next','disable')
+        }else if (id_jurusan) {
+            button('next')
+        }
         document.getElementById("nextBtn").innerHTML = "Next";
       }
       //... and run a function that will display the correct step indicator:
@@ -207,7 +355,6 @@
      }else{
         document.getElementsByClassName("step")[currentTab].classList.remove('finish');
       }
-      console.log(currentTab);
 
       return valid; // return the valid status
     }
@@ -221,5 +368,7 @@
       //... and adds the "active" class on the current step:
       x[n].className += " active";
     }
+
+
     </script>
 @endsection

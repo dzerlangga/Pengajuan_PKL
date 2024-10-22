@@ -7,9 +7,6 @@
     --secunder: #7f8b95;
 }
 
-.container-siswa {
-}
-
 .container-siswa::before {
     content: "";
     position: absolute;
@@ -27,7 +24,7 @@
     background: rgba(237, 237, 237, 0.9);
     width: 952px;
     margin: auto;
-    border-radius: 10px;
+    /* border-radius: 10px; */
     padding: 50px;
     text-align: left;
     color: rgb(68, 68, 68);
@@ -37,7 +34,7 @@
     pointer-events: none;
 }
 
-.btn-siswa {
+/* .btn-siswa {
     border-radius: 10px;
     border: 0;
     user-select: none;
@@ -65,4 +62,39 @@
 
 .btn-danger-siswa {
     background-color: var(--danger);
+} */
+
+#regForm {
+    background-color: #ffffff;
+    margin: 100px auto;
+    padding: 40px;
+    width: 70%;
+    min-width: 300px;
+}
+
+/* Hide all steps by default: */
+.tab {
+    display: none;
+}
+
+/* Make circles that indicate the steps of the form: */
+.step {
+    height: 40px;
+    width: 40px;
+    margin: 0 10px;
+    background-color: #bbbbbb;
+    border: none;
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0.5;
+}
+
+.step.active {
+    opacity: 1;
+}
+
+/* Mark the steps that are finished and valid: */
+.step.finish {
+    background-color: #feab06;
+    color: white;
 }

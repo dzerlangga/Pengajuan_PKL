@@ -51,8 +51,9 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 Route::group(['middleware' => 'guest'], function () {
-    Route::get('/pengajuanpkl', [SiswaController::class, 'index']);
+    Route::get('/pengajuanpkl', [SiswaController::class, 'index'])->name('pengumuman');
     Route::get('/pengajuanpkl/form', [SiswaController::class, 'form'])->name('formPengajuan');
+    Route::get('/pengajuanpkl/rekomendasi', [SiswaController::class, 'rekomendasi'])->name('rekomendasi');
     Route::get('/admin', [SessionsController::class, 'create']);
     Route::post('/session', [SessionsController::class, 'store']);
 

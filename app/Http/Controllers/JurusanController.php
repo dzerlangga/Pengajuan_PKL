@@ -8,10 +8,22 @@ use Illuminate\Http\Request;
 
 class JurusanController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $data = Jurusan::query();
+
+        // filter by nama
+        $data->when($request->nama, function ($query) use ($request) {
+            return $query->where('nama','like', '%'.$request->nama.'%');
+        });
+
+        //filter by status
+        $data->when($request->status, function ($query) use ($request) {
+            return $query->where('status','==', '%'.$request->status.'%');
+        });
+
         // dd($data);
-        return view('jurusan.index');
+
+        return view('jurusan.index',['jurusan'=>$data->get()]);
     }
 }
