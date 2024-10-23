@@ -22,8 +22,6 @@ class JurusanController extends Controller
             return $query->where('status','==', '%'.$request->status.'%');
         });
 
-        // dd($data);
-
         return view('jurusan.index',['jurusan'=>$data->get()]);
     }
 }

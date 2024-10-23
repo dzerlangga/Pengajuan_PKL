@@ -33,34 +33,37 @@
     </div>
     {{-- END MODAL --}}
 
-    <div class="text-center w-100">
-        <div class="logo mt-6">
+    <div class="w-100">
+        <div class="logo mt-6 text-center">
             <img src="{{ asset('assets/img/logos/yayasan.png') }}" height="98.86" class="mx-2" />
             <img src="{{ asset('assets/img/logos/angkasa.png') }}" height="98.86" class="mx-2" />
         </div>
         <div>
-            <form class="my-4 rounded" style="background-color: rgba(237, 237, 237, 0.9); color:rgb(68, 68, 68)" id="regForm" action="/action_page.php">
+            <form action="{{ route('pengajuan.store') }}" method="POST" class="my-4 rounded" style="background-color: rgba(237, 237, 237, 0.9); color:rgb(68, 68, 68)" id="regForm">
+                @csrf
+                <!-- Circles which indicates the steps of the form: -->
                 <div style="text-align:center;margin-bottom:25px;">
                     <span class="step finish align-content-center">1</span>
                     <span class="step align-content-center">2</span>
                     <span class="step align-content-center">3</span>
-                  </div>
+                    <span class="step align-content-center">4</span>
+                </div>
                 <!-- One "tab" for each step in the form: -->
-                <div class="tab">
+                <div class="tab text-center">
                   <div class="text-start">
                     <p>Halo <span><b>Siswa/i</b></span> SMK,</p>
-                    <p>Untuk melengkapi proses pengajuan Praktik Kerja Lapangan (PKL), kami membutuhkan informasi mengenai jurusan yang saat ini kamu pilih di sekolah. Informasi ini akan membantu kami dalam menempatkan kamu di perusahaan yang sesuai dengan bidang keahlianmu.</p>
+                    <p class="p-menjorok">Untuk melengkapi proses pengajuan Praktik Kerja Lapangan (PKL), kami membutuhkan informasi mengenai jurusan yang saat ini kamu pilih di sekolah. Informasi ini akan membantu kami dalam menempatkan kamu di perusahaan yang sesuai dengan bidang keahlianmu.</p>
                   </div>
                   Pilih Jurusan:
                   <div class="col-4 m-auto">
-                    <select id="selectJurusan" class="form-select">
+                    <select id="selectJurusan" name="jurusan" class="form-select">
                     <option selected value="0">Pilih Jurusan...</option>
-                    @foreach ($jurusan as $data)
-                        <option value="{{$data->id}}">{{ $data->nama }}</option>
-                    @endforeach
-                  </select>
+                        @foreach ($jurusan as $data)
+                            <option value="{{$data->id}}">{{ $data->nama }}</option>
+                        @endforeach
+                    </select>
+                  </div>
                 </div>
-                    </div>
                 <div class="tab">
                     <div class="card mb-4">
                         <div class="card-header pb-0">
@@ -85,76 +88,49 @@
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                                 NIS
                                             </th>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                            <th class="text-uppercase text-center text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                                 Aksi
                                             </th>
                                         </tr>
                                     </thead>
                                     <tbody id="body_table">
-                                        <tr id="empty-data"><td class="dataTables-empty" colspan="3">Belum ada anggota yang ditambah</td></tr>
-                                        {{-- <tr>
-                                            <td class="ps-4">
-                                                <p class="text-xs font-weight-bold mb-0">Deni RM</p>
-                                            </td>
-                                            <td class="text-center">
-                                                <p class="text-xs font-weight-bold mb-0">16102411186</p>
-                                            </td>
-                                            <td class="text-center">
-                                                <a href="#" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Edit user">
-                                                    <i class="fas fa-user-edit text-secondary"></i>
-                                                </a>
-                                                <span>
-                                                    <i class="cursor-pointer fas fa-trash text-secondary"></i>
-                                                </span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="ps-4">
-                                                <p class="text-xs font-weight-bold mb-0">Dandi ZE</p>
-                                            </td>
-                                            <td class="text-center">
-                                                <p class="text-xs font-weight-bold mb-0">16102411187</p>
-                                            </td>
-                                            <td class="text-center">
-                                                <a href="#" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Edit user">
-                                                    <i class="fas fa-user-edit text-secondary"></i>
-                                                </a>
-                                                <span>
-                                                    <i class="cursor-pointer fas fa-trash text-secondary"></i>
-                                                </span>
-                                            </td>
-                                        </tr> --}}
+                                        <tr id="empty-data" class="text-center"><td class="dataTables-empty" colspan="3">Belum ada anggota yang ditambah</td></tr>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
-                  {{-- <p><input placeholder="E-mail..." oninput="this.className = ''" name="email"></p> --}}
-                  {{-- <p><input placeholder="Phone..." oninput="this.className = ''" name="phone"></p> --}}
                 </div>
                 <div class="tab">
-                    <div class="form-group row">
-                        <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
-                        <div class="col-sm-10">
-                          <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com">
-                        </div>
-                      </div>
-                      <div class="form-group row">
-                        <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
-                        <div class="col-sm-10">
-                          <input type="password" class="form-control" id="inputPassword">
-                        </div>
-                      </div>
-                    {{-- Nama Perusahaan: --}}
-                  {{-- <p><input placeholder="dd" oninput="this.className = ''" name="dd"></p>
-                  <p><input placeholder="mm" oninput="this.className = ''" name="nn"></p>
-                  <p><input placeholder="yyyy" oninput="this.className = ''" name="yyyy"></p> --}}
+                    <div class="text-start">
+                        <p class="p-menjorok">Sebagai bagian dari proses pengajuan Praktik Kerja Lapangan (PKL), kamu perlu mengisi Form Pengisian Perusahaan. Informasi ini sangat penting untuk memudahkan kami dalam menempatkan kamu di perusahaan yang sesuai dengan pilihan dan minatmu.</p>
+                        <p><span><b>Penting:</b></span> Pengisian form ini wajib dilakukan sebagai bagian dari kelengkapan administrasi PKL. Pastikan data yang kamu berikan akurat dan sesuai dengan perusahaan yang sudah atau akan kamu hubungi.</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="nama_perusahaan">Nama Perusahaan (Harus Lengkap) <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="nama_perusahaan" name="perusahaan">
+                        <span class="info">(contoh : PT Baraya Telematika, contoh : Bengkel Rahmat Putra )</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="alamat_perusahaan">Alamat Perusahaan (Harus Lengkap) <span class="text-danger">*</span></label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="alamat"></textarea>
+                        <span class="info">(contoh : Jl. Sukasari no 12/78 Kel Gaga Kec Cijawura Kota Bandung)</span>
+                    </div>
                 </div>
+                <div class="tab">
+                    <p class="p-menjorok">kami membutuhkan nomor WhatsApp yang bisa dihubungi. Harap segera mengisi Form Nomor WA agar kami dapat memastikan semua informasi penting tersampaikan dengan lancar.</p>
+                    <div class="form-group">
+                        <label for="no_hp">No Telepon (WA) <span class="text-danger">*</span></label>
+                        <input type="text" name="no_hp" class="form-control" id="no_hp" placeholder="08*********" required>
+                    </div>
+                    <p><span><b>Penting:</b></span> Mohon di ingat yah Form ini hanya bisa di isi 1 Akun 1 Kali Tidak ada perubahan dalam pembentukan apa pun terkecuali alasan yang mendukung ... Terimakasih!!!</p>
+                </div>
+
+                {{-- BUTTON --}}
                 <div class="d-flex justify-content-end">
                     <button type="button" class="btn bg-gradient-info btn-sm ms-2" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
                     <button type="button" class="btn bg-gradient-secondary btn-siswa-disable btn-sm ms-2" id="nextBtn" onclick="nextPrev(1)">Next</button>
                 </div>
-                <!-- Circles which indicates the steps of the form: -->
 
               </form>
         </div>
@@ -174,7 +150,7 @@
     let inputs = document.querySelectorAll('.input-anggota');
     let id_jurusan = null
     let data_anggota = []
-    var currentTab = 2; // Current tab is set to be the first tab (0)
+    var currentTab = 0; // Current tab is set to be the first tab (0)
     showTab(currentTab); // Display the current tab
     !localStorage.getItem("Read") && window.history.back() ;
 
@@ -205,7 +181,12 @@
             }
 
         if (data_anggota.find(e=> e.nis === data.nis)) {
-            alert('nis telah tambahkan')
+            Swal.fire({
+                    title: 'Peringatan!',
+                    text: 'NIS telah ada!',
+                    icon: 'warning',
+                    confirmButtonText: 'Tutup'
+                    })
             return
         }
         data_anggota = [...data_anggota, data]
@@ -230,7 +211,7 @@
         data_anggota = filter
         var rowIndex = $(this).closest('tr').index();
         $('#table-anggota tbody tr').eq(rowIndex).remove();
-        if (data_anggota.length < 6 ) button('add')
+        if (data_anggota.length < 6 ) button('add','show')
         if (data_anggota.length === 0 ) {
             $('#empty-data').show()
             button('next', 'disable')
@@ -256,6 +237,10 @@
             if (condition?.includes('disable')) {
                 $('#tambah_button').addClass('bg-gradient-secondary btn-siswa-disable')
                 $('#tambah_button').removeClass('bg-gradient-success')
+            }else if(condition.includes('hide')){
+                $('#tambah_button').hide()
+            }else if(condition.includes('show')){
+                $('#tambah_button').show()
             }else{
                 $('#tambah_button').removeClass('bg-gradient-secondary btn-siswa-disable')
                 $('#tambah_button').addClass('bg-gradient-success')
@@ -267,25 +252,30 @@
 
     function renderTable(table = null) {
             $('#empty-data').hide()
-
-            body_table.append(`
-            <tr>
-                <td class="ps-4">
-                    <p class="text-xs font-weight-bold mb-0">${table.nama}</p>
-                </td>
-                <td class="text-center">
-                    <p class="text-xs font-weight-bold mb-0">${table.nis}</p>
-                </td>
-                <td class="text-center">
-                    <span class="del-anggota" id="${table.nis}">
-                        <i class="cursor-pointer fas fa-trash text-secondary"></i>
-                    </span>
-                </td>
-            </tr>
-            `)
+            let html = ''
+            data_anggota.map((e,index)=>{
+                html +=`
+                <tr>
+                    <td class="ps-4">
+                        <p class="text-xs font-weight-bold mb-0">${e.nama}</p>
+                        <input type="hidden" name="anggota[${index}][nama]" value="${e.nama}" />
+                    </td>
+                    <td>
+                        <p class="text-xs font-weight-bold mb-0">${e.nis}</p>
+                        <input type="hidden" name="anggota[${index}][nis]" value="${e.nis}" />
+                    </td>
+                    <td class="text-center">
+                        <span class="del-anggota" id="${e.nis}">
+                            <i class="cursor-pointer fas fa-trash text-secondary"></i>
+                        </span>
+                    </td>
+                </tr>
+                `
+            })
+            body_table.html(html)
 
             if (data_anggota.length === 6) {
-                button('add','disable')
+                button('add','hide')
             }
     }
 
@@ -300,36 +290,34 @@
         document.getElementById("prevBtn").style.display = "inline";
       }
       if (n == (x.length - 1)) {
-        button('next','success')
-        document.getElementById("nextBtn").innerHTML = "Submit";
-      } else {
+          button('next','success')
+          btnNext.innerHTML = "Submit";
+        //   btnNext.setAttribute('type','submit')
+    } else {
+        // btnNext.removeAttribute('type')
         if (data_anggota.length === 0 && n == 1) {
-           button('next','disable')
+            button('next','disable')
         }else if (id_jurusan) {
             button('next')
         }
-        document.getElementById("nextBtn").innerHTML = "Next";
+        btnNext.innerHTML = "Next";
       }
       //... and run a function that will display the correct step indicator:
       fixStepIndicator(n)
     }
 
     function nextPrev(n) {
-      // This function will figure out which tab to display
-      var x = document.getElementsByClassName("tab");
-      // Exit the function if any field in the current tab is invalid:
-      if (n == 1 && !validateForm()) return false;
-      // Hide the current tab:
-      x[currentTab].style.display = "none";
-      // Increase or decrease the current tab by 1:
-      currentTab = currentTab + n;
-      // if you have reached the end of the form...
-      if (currentTab >= x.length) {
-        // ... the form gets submitted:
+        var x = document.getElementsByClassName("tab");
+      if (currentTab + n >= x.length) {
+
         document.getElementById("regForm").submit();
         return false;
       }
-      // Otherwise, display the correct tab:
+      if (n == 1 && !validateForm()) return false;
+      x[currentTab].style.display = "none";
+
+      currentTab = currentTab + n;
+
       showTab(currentTab);
     }
 

@@ -34,24 +34,28 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($jurusan as $data )
-                                <tr>
-                                    <td class="ps-4">
-                                        <p class="text-xs font-weight-bold mb-0">{{ $data->nama }}</p>
-                                    </td>
-                                    <td class="ps-4">
-                                        <p class="text-xs font-weight-bold mb-0">{{ $data->singkatan }}</p>
-                                    </td>
-                                    <td class="text-center">
-                                        <a href="#" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Edit user">
-                                            <i class="fas fa-user-edit text-secondary"></i>
-                                        </a>
-                                        <span>
-                                            <i class="cursor-pointer fas fa-trash text-secondary"></i>
-                                        </span>
-                                    </td>
-                                </tr>
-                                @endforeach
+                                @if ($jurusan)
+                                    @foreach ($jurusan as $data )
+                                    <tr>
+                                        <td class="ps-4">
+                                            <p class="text-xs font-weight-bold mb-0">{{ $data->nama }}</p>
+                                        </td>
+                                        <td class="ps-4">
+                                            <p class="text-xs font-weight-bold mb-0">{{ $data->singkatan }}</p>
+                                        </td>
+                                        <td class="text-center">
+                                            <a href="#" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Edit user">
+                                                <i class="fas fa-user-edit text-secondary"></i>
+                                            </a>
+                                            <span>
+                                                <i class="cursor-pointer fas fa-trash text-secondary"></i>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                @else
+                                    <tr class="text-center"><td class="dataTables-empty" colspan="3">Tidak ada data</td></tr>
+                                @endif
                             </tbody>
                         </table>
                     </div>

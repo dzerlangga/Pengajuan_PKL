@@ -98,3 +98,13 @@
     background-color: #feab06;
     color: white;
 }
+
+.form-group > .info {
+    font-size: smaller;
+    font-weight: bold;
+}
+
+.p-menjorok {
+    text-indent: 45px;
+    text-align: justify;
+}

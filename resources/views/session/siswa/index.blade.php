@@ -1,6 +1,18 @@
 @extends('layouts.user_type.guest')
 
 @section('content')
+
+<style>
+    .fade-out {
+        opacity: 1;
+        transition: opacity 1s ease; /* Animasi opacity selama 1 detik */
+    }
+
+    .fade-out-hidden {
+        opacity: 0; /* Menghilangkan elemen */
+    }
+</style>
+
 <div class="container-siswa">
     <div class="text-center w-100">
         <div class="logo mt-6">
@@ -8,6 +20,11 @@
             <img src="{{ asset('assets/img/logos/angkasa.png') }}" height="98.86" class="mx-2" />
         </div>
         <div class="container-pengumuman rounded mt-4">
+            @if(session('success'))
+                <div class="alert alert-info fade-out" id="alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
             <div>
                 {!! $text ? nl2br(htmlspecialchars_decode($text)) : 'MAAF TIDAK ADA PENGUMUMAN YANG TERSEDIA.' !!}
             </div>
@@ -31,6 +48,18 @@
     const selectElement = document.querySelector("#read");
     const ajukanbtn = document.getElementById("ajukanbtn");
     let read_status = false
+
+    window.onload = function() {
+        var alert = document.getElementById('alert-success');
+        if (alert) {
+            setTimeout(function() {
+                alert.classList.add('fade-out-hidden'); // Menambahkan kelas untuk efek fade-out
+                setTimeout(function() {
+                    alert.style.display = 'none'; // Menghilangkan alert setelah animasi selesai
+                }, 1000); // Waktu yang sama dengan durasi transisi CSS
+            }, 5000); // 5000 ms = 5 detik
+        }
+    };
 
     selectElement.addEventListener("change", function() {
         localStorage.setItem("Read", this.checked);

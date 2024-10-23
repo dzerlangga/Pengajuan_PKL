@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('informasis', function (Blueprint $table) {
+        Schema::create('anggota_pengajuans', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('surat_id')->constrained('surats')->onDelete('cascade');
             $table->string('nama');
-            $table->longText('pengumuman');
-            $table->enum('status',['1','0']);
+            $table->string('nis');
             $table->timestamps();
         });
     }
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('informasis');
+        Schema::dropIfExists('anggota_pengajuans');
     }
 };

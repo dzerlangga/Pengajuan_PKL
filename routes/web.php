@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\InformasiController;
 use App\Http\Controllers\JurusanController;
 use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\SiswaController;
+use App\Http\Controllers\SuratController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -42,9 +44,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('perusahaan', function () {
             return view('perusahaan.index');
         })->name('perusahaan');
-        Route::get('pengumuman', function () {
-            return view('pengumuman.index');
-        })->name('pengumuman');
+        Route::get('pengumuman', [InformasiController::class,'index'])->name('jurusan');
     });
 
     Route::get('/logout', [SessionsController::class, 'destroy']);
@@ -56,6 +56,7 @@ Route::group(['middleware' => 'guest'], function () {
     Route::get('/pengajuanpkl/rekomendasi', [SiswaController::class, 'rekomendasi'])->name('rekomendasi');
     Route::get('/admin', [SessionsController::class, 'create']);
     Route::post('/session', [SessionsController::class, 'store']);
+    Route::post('/pengajuanpkl/store', [SuratController::class, 'store'])->name('pengajuan.store');
 
 });
 
