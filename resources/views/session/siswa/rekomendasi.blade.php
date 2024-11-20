@@ -11,7 +11,7 @@
             <div>
                 HALAMAN UNTUK REKOMENDASI PERUSAHAAN
             </div>
-            <button id="ajukanbtn" class="btn bg-gradient-info btn-sm me-1" onclick="window.location.href='{{ route('pengumuman') }}'">Kembali</button>
+            <button id="ajukanbtn" class="btn bg-gradient-info btn-sm me-1" onclick="window.location.href='{{ route('informasi') }}'">Kembali</button>
         </div>
     </div>
 </div>

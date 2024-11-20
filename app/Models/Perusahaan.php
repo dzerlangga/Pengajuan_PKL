@@ -5,17 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Jurusan extends Model
+class Perusahaan extends Model
 {
 
     use HasFactory;
     protected $fillable = [
-        'nama','singkatan'
+        'nama','alamat','kontak','website'
     ];
-
-
-    public function surat()
-    {
-        return $this->hasMany(Surat::class);
-    }
 }

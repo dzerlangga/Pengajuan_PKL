@@ -113,7 +113,7 @@
                     </div>
                     <div class="form-group">
                         <label for="alamat_perusahaan">Alamat Perusahaan (Harus Lengkap) <span class="text-danger">*</span></label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="alamat"></textarea>
+                        <textarea class="form-control" id="alamat" rows="3" name="alamat"></textarea>
                         <span class="info">(contoh : Jl. Sukasari no 12/78 Kel Gaga Kec Cijawura Kota Bandung)</span>
                     </div>
                 </div>
@@ -123,13 +123,14 @@
                         <label for="no_hp">No Telepon (WA) <span class="text-danger">*</span></label>
                         <input type="text" name="no_hp" class="form-control" id="no_hp" placeholder="08*********" required>
                     </div>
-                    <p><span><b>Penting:</b></span> Mohon di ingat yah Form ini hanya bisa di isi 1 Akun 1 Kali Tidak ada perubahan dalam pembentukan apa pun terkecuali alasan yang mendukung ... Terimakasih!!!</p>
+                    <p><span><b>Penting:</b></span> Mohon di ingat yah Form ini hanya bisa di isi <b> 1 Akun 1 Kali </b>Tidak ada perubahan dalam pembentukan apa pun terkecuali alasan yang mendukung ... Terimakasih!!!</p>
                 </div>
 
                 {{-- BUTTON --}}
                 <div class="d-flex justify-content-end">
-                    <button type="button" class="btn bg-gradient-info btn-sm ms-2" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
-                    <button type="button" class="btn bg-gradient-secondary btn-siswa-disable btn-sm ms-2" id="nextBtn" onclick="nextPrev(1)">Next</button>
+                    <a href="{{ url('pengajuanpkl') }}" id="backBtn"><button type="button" class="btn bg-gradient-info btn-sm ms-2" id="backBtn">Kembali</button></a>
+                    <button type="button" class="btn bg-gradient-info btn-sm ms-2" id="prevBtn" onclick="nextPrev(-1)">Sebelumnya</button>
+                    <button type="button" class="btn bg-gradient-secondary btn-siswa-disable btn-sm ms-2" id="nextBtn" onclick="nextPrev(1)">Selanjutnya</button>
                 </div>
 
               </form>
@@ -138,7 +139,6 @@
 </div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
     let id_select_jurusan = $('#selectJurusan');
@@ -213,7 +213,7 @@
         $('#table-anggota tbody tr').eq(rowIndex).remove();
         if (data_anggota.length < 6 ) button('add','show')
         if (data_anggota.length === 0 ) {
-            $('#empty-data').show()
+            body_table.html('<tr class="text-center"><td class="dataTables-empty" colspan="3">Belum ada anggota yang ditambah</td></tr>')
             button('next', 'disable')
         }
     });
@@ -251,7 +251,6 @@
     }
 
     function renderTable(table = null) {
-            $('#empty-data').hide()
             let html = ''
             data_anggota.map((e,index)=>{
                 html +=`
@@ -286,21 +285,23 @@
       //... and fix the Previous/Next buttons:
       if (n == 0) {
         document.getElementById("prevBtn").style.display = "none";
-      } else {
-        document.getElementById("prevBtn").style.display = "inline";
-      }
-      if (n == (x.length - 1)) {
-          button('next','success')
-          btnNext.innerHTML = "Submit";
-        //   btnNext.setAttribute('type','submit')
-    } else {
-        // btnNext.removeAttribute('type')
-        if (data_anggota.length === 0 && n == 1) {
-            button('next','disable')
-        }else if (id_jurusan) {
-            button('next')
-        }
-        btnNext.innerHTML = "Next";
+        document.getElementById("backBtn").style.display = "inline";
+        } else {
+            document.getElementById("backBtn").style.display = "none";
+            document.getElementById("prevBtn").style.display = "inline";
+          }
+          if (n == (x.length - 1)) {
+              button('next','success')
+              btnNext.innerHTML = "Submit";
+            //   btnNext.setAttribute('type','submit')
+        } else {
+            // btnNext.removeAttribute('type')
+            if (data_anggota.length === 0 && n == 1) {
+                button('next','disable')
+            }else if (id_jurusan) {
+                button('next')
+            }
+            btnNext.innerHTML = "Next";
       }
       //... and run a function that will display the correct step indicator:
       fixStepIndicator(n)

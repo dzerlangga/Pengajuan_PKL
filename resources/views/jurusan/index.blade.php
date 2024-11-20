@@ -5,13 +5,18 @@
 <div>
     <div class="row">
         <div class="col-12">
-            <div class="card mb-4 mx-4">
+            @if(session('success'))
+                <div class="alert alert-success fade-out text-white" id="alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
+            <div class="card mb-4">
                 <div class="card-header pb-0">
                     <div class="d-flex flex-row justify-content-between">
                         <div>
                             <h5 class="mb-0">Jurusan</h5>
                         </div>
-                        <a href="#" class="btn bg-gradient-info btn-sm mb-0" type="button">+&nbsp; Tambah Jurusan</a>
+                        <a href="{{ url('master-data/jurusan/add') }}" class="btn bg-gradient-info btn-sm mb-0" type="button">+&nbsp; Tambah Jurusan</a>
                     </div>
                 </div>
                 <div class="card-body px-0 pt-0 pb-2">
@@ -34,8 +39,10 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @if ($jurusan)
-                                    @foreach ($jurusan as $data )
+                                @if (count($jurusan) === 0)
+                                    <tr class="text-center"><td class="dataTables-empty" colspan="3">Tidak ada data</td></tr>
+                                @else
+                                @foreach ($jurusan as $data )
                                     <tr>
                                         <td class="ps-4">
                                             <p class="text-xs font-weight-bold mb-0">{{ $data->nama }}</p>
@@ -44,17 +51,19 @@
                                             <p class="text-xs font-weight-bold mb-0">{{ $data->singkatan }}</p>
                                         </td>
                                         <td class="text-center">
-                                            <a href="#" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Edit user">
+                                            <a href="{{ url('master-data/jurusan/edit/'.$data->id ) }}" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Detail data">
                                                 <i class="fas fa-user-edit text-secondary"></i>
                                             </a>
-                                            <span>
+                                            <a href="#" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Hapus data" onclick="deleted(event,{{ $data->id }})">
                                                 <i class="cursor-pointer fas fa-trash text-secondary"></i>
-                                            </span>
+                                            </a>
+                                            <form action="{{ route('jurusan.delete', $data->id) }}" method="POST" id="deleteForm{{ $data->id }}" style="display: none">
+                                                @csrf
+                                                @method('DELETE')
+                                            </form>
                                         </td>
                                     </tr>
                                     @endforeach
-                                @else
-                                    <tr class="text-center"><td class="dataTables-empty" colspan="3">Tidak ada data</td></tr>
                                 @endif
                             </tbody>
                         </table>
@@ -259,6 +268,35 @@
         </div>
     </div> --}}
 </div>
+
+<script>
+    window.onload = function() {
+        var alert = document.getElementById('alert-success');
+        if (alert) {
+            setTimeout(function() {
+                alert.classList.add('fade-out-hidden'); // Menambahkan kelas untuk efek fade-out
+                setTimeout(function() {
+                    alert.style.display = 'none'; // Menghilangkan alert setelah animasi selesai
+                }, 1000); // Waktu yang sama dengan durasi transisi CSS
+            }, 5000); // 5000 ms = 5 detik
+        }
+    };
+
+    function deleted(e,id) {
+        Swal.fire({
+        icon: "warning",
+        title: "Apakah data ini akan dihapus?",
+        showCancelButton: true,
+        confirmButtonText: "Hapus",
+      }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire("Data Berhasil Dihapus!", "", "success");
+            $(`#deleteForm${id}`).submit()
+        }
+      });
+      e.preventDefault();
+    }
+</script>
 
 @endsection
 

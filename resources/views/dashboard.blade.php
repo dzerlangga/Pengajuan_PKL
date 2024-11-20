@@ -12,7 +12,7 @@
               <div class="numbers">
                 <p class="text-sm mb-0 text-capitalize font-weight-bold">Total surat draft</p>
                 <h5 class="font-weight-bolder mb-0 ">
-                  <span class="text-secondary">103,430</span> surat
+                  <span class="text-secondary" id="draft" countTo="{{ $data_draft }}">0</span> surat
                 </h5>
               </div>
             </div>
@@ -33,7 +33,7 @@
               <div class="numbers">
                 <p class="text-sm mb-0 text-capitalize font-weight-bold">Total surat diterima</p>
                 <h5 class="font-weight-bolder mb-0">
-                    <span class="text-success">103,430</span> surat
+                    <span class="text-success" id="accept" countTo="{{ $data_accept }}">0</span> surat
                 </h5>
               </div>
             </div>
@@ -54,7 +54,7 @@
               <div class="numbers">
                 <p class="text-sm mb-0 text-capitalize font-weight-bold">Total surat ditolak</p>
                 <h5 class="font-weight-bolder mb-0">
-                  <span class="text-danger">103,430</span> surat
+                  <span class="text-danger" id="reject" countTo="{{ $data_reject }}">0</span> surat
                 </h5>
               </div>
             </div>
@@ -593,8 +593,25 @@
     </div>
   </div> --}}
 
+  <script src="https://soft-ui-dashboard-laravel.creative-tim.com/assets/js/plugins/countup.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    let data = ['draft','accept','reject'];
+    if (data) {
+        data.map(data=>{
+            const countUp = new CountUp(data, document.getElementById(data).getAttribute("countTo"));
+            if (!countUp.error) {
+              countUp.start();
+            } else {
+              console.error(countUp.error);
+            }
+        })
+    }
+</script>
+
 @endsection
-@push('dashboard')
+{{-- @push('dashboard')
   <script>
     window.onload = function() {
       var ctx = document.getElementById("chart-bars").getContext("2d");
@@ -767,5 +784,5 @@
       });
     }
   </script>
-@endpush
+@endpush --}}
 

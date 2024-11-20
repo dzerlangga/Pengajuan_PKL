@@ -13,7 +13,6 @@ class SiswaController extends Controller
     {
         $data = Informasi::where('status','1')->get()[0] ?? null;
         $text = $data->pengumuman ?? null;
-        // dd($data->pengumuman);
         return view('session.siswa.index',compact('text'));
     }
 
@@ -25,7 +24,6 @@ class SiswaController extends Controller
 
     public function rekomendasi()
     {
-        // $data = Jurusan::get();
         return view('session.siswa.rekomendasi');
     }
 }

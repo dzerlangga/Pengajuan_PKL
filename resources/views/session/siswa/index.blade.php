@@ -21,7 +21,7 @@
         </div>
         <div class="container-pengumuman rounded mt-4">
             @if(session('success'))
-                <div class="alert alert-info fade-out" id="alert-success">
+                <div class="alert alert-success fade-out text-white" id="alert-success">
                     {{ session('success') }}
                 </div>
             @endif
@@ -45,9 +45,32 @@
 
 <script>
     localStorage.removeItem('Read');
+    const tabKey = 'app-tab-opened';
     const selectElement = document.querySelector("#read");
     const ajukanbtn = document.getElementById("ajukanbtn");
     let read_status = false
+
+       // Periksa jika ada tab lain yang sudah terbuka
+       if (localStorage.getItem(tabKey)) {
+           alert('Aplikasi ini sudah dibuka di tab lain. Hanya satu tab yang diizinkan.');
+           window.location.href = "about:blank"; // Menutup tab yang baru dibuka (opsional)
+        } else {
+            // Tandai tab ini sebagai tab yang aktif
+            localStorage.setItem(tabKey, 'true');
+        }
+
+        // Hapus tanda jika tab ini ditutup
+        window.addEventListener('beforeunload', () => {
+            localStorage.removeItem(tabKey);
+        });
+
+        // Memastikan bahwa ketika tab lain dibuka, peringatan akan muncul
+        window.addEventListener('storage', (event) => {
+            if (event.key === tabKey && event.newValue === 'true') {
+                alert('Aplikasi ini sudah dibuka di tab lain. Hanya satu tab yang diizinkan.');
+                window.close(); // Menutup tab yang baru dibuka (opsional)
+            }
+        });
 
     window.onload = function() {
         var alert = document.getElementById('alert-success');

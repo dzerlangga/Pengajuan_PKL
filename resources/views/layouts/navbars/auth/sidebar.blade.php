@@ -3,7 +3,7 @@
   <div class="sidenav-header">
     <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
     <a class="align-items-center d-flex m-0 navbar-brand text-wrap" href="{{ route('dashboard') }}">
-        <img src="../assets/img/favicon.png" class="navbar-brand-img h-100" alt="...">
+        <img src="{{ url('assets/img/favicon.png') }}" class="navbar-brand-img h-100" alt="...">
         <span class="ms-3 font-weight-bold">PENGAJUAN PKL <br /><span style="font-size: 10px">(PRAKTIK KERJA LAPANGAN)</span></span>
     </a>
   </div>
@@ -58,7 +58,7 @@
         </a>
     </li> --}}
     <li class="nav-item">
-        <a class="nav-link {{ (Request::is('persuratan/surat-diterima') ? 'active' : '') }} " href="{{ url('persuratan/surat-diterima') }}">
+        <a class="nav-link {{ (Request::is('persuratan/surat-accept') ? 'active' : '') }} " href="{{ url('persuratan/surat-accept') }}">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                 <i class="fas fa-envelope-open-text ps-2 pe-2 text-center text-dark {{ (Request::is('user-management') ? 'text-white' : 'text-dark') }}" style="font-size: 1rem;" aria-hidden="true"></i>
             </div>
@@ -74,7 +74,7 @@
         </a>
     </li> --}}
     <li class="nav-item">
-        <a class="nav-link {{ (Request::is('persuratan/surat-ditolak') ? 'active' : '') }} " href="{{ url('persuratan/surat-ditolak') }}">
+        <a class="nav-link {{ (Request::is('persuratan/surat-reject') ? 'active' : '') }} " href="{{ url('persuratan/surat-reject') }}">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                 <i class="fas fa-file-excel ps-2 pe-2 text-center text-dark {{ (Request::is('user-management') ? 'text-white' : 'text-dark') }}" style="font-size: 1rem;" aria-hidden="true"></i>
             </div>
@@ -126,11 +126,11 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link {{ (Request::is('master-data/pengumuman') ? 'active' : '') }}" href="{{ url('master-data/pengumuman') }}">
+        <a class="nav-link {{ (Request::is('master-data/informasi') ? 'active' : '') }}" href="{{ url('master-data/informasi') }}">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                 <i class="fas fa-bullhorn ps-2 pe-2 text-center text-dark {{ (Request::is('user-management') ? 'text-white' : 'text-dark') }}" style="font-size: 1rem;" aria-hidden="true"></i>
       </div>
-      <span class="nav-link-text ms-1">Pengumuman</span>
+      <span class="nav-link-text ms-1">Informasi</span>
     </a>
   </li>
             {{-- <li class="nav-item">

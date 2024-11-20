@@ -95,7 +95,7 @@
 
 /* Mark the steps that are finished and valid: */
 .step.finish {
-    background-color: #feab06;
+    background-color: var(--primary);
     color: white;
 }
 

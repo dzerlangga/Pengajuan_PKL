@@ -13,10 +13,12 @@ return new class extends Migration
     {
         Schema::create('surats', function (Blueprint $table) {
             $table->id();
-            $table->string('jurusan');
+            $table->foreignId('jurusan_id')->constrained('jurusans')->onDelete('cascade');
             $table->string('perusahaan');
+            $table->string('no_surat')->nullable();
             $table->longText('alamat');
             $table->string('no_hp');
+            $table->enum('status',['draft','accept','reject']);
             $table->timestamps();
         });
     }

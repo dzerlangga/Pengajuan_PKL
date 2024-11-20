@@ -49,4 +49,8 @@
     </section>
   </main>
 
+  <script>
+    localStorage.removeItem('Read');
+</script>
+
 @endsection

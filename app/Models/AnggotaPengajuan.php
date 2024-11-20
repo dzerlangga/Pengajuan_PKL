@@ -15,4 +15,9 @@ class AnggotaPengajuan extends Model
     {
         return $this->belongsTo(Surat::class);
     }
+
+    public function anggotaList()
+    {
+        return $this->hasMany(Surat::class);
+    }
 }
