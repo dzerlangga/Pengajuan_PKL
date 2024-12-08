@@ -409,50 +409,8 @@ At present, we officially aim to support the last two versions of the following 
 
 <img src="https://s3.amazonaws.com/creativetim_bucket/github/browser/chrome.png" width="64" height="64"> <img src="https://s3.amazonaws.com/creativetim_bucket/github/browser/firefox.png" width="64" height="64"> <img src="https://s3.amazonaws.com/creativetim_bucket/github/browser/edge.png" width="64" height="64"> <img src="https://s3.amazonaws.com/creativetim_bucket/github/browser/safari.png" width="64" height="64"> <img src="https://s3.amazonaws.com/creativetim_bucket/github/browser/opera.png" width="64" height="64">
 
-## Reporting Issues
-We use GitHub Issues as the official bug tracker for the Soft UI Dashboard. Here are some advices for our users that want to report an issue:
+## Requaired PHP Version
+- ">= 8.2.0"
 
-1. Make sure that you are using the latest version of the Soft UI Dashboard. Check the CHANGELOG from your dashboard on our [website](https://www.creative-tim.com/product/soft-ui-dashboard-pro-laravel?ref=readme-sudpl).
-2. Providing us reproducible steps for the issue will shorten the time it takes for it to be fixed.
-3. Some issues may be browser specific, so specifying in what browser you encountered the issue might help.
+## How To Install
 
-## Licensing
-- Copyright 2021 [Creative Tim](https://www.creative-tim.com?ref=readme-sudpl)
-- Creative Tim [license](https://www.creative-tim.com/license?ref=readme-sudpl)
-
-## Useful Links
-- [Tutorials](https://www.youtube.com/channel/UCVyTG4sCw-rOvB9oHkzZD1w)
-- [Affiliate Program](https://www.creative-tim.com/affiliates/new) (earn money)
-- [Blog Creative Tim](http://blog.creative-tim.com/)
-- [Free Products](https://www.creative-tim.com/bootstrap-themes/free) from Creative Tim
-- [Premium Products](https://www.creative-tim.com/bootstrap-themes/premium?ref=sudl-readme) from Creative Tim
-- [React Products](https://www.creative-tim.com/bootstrap-themes/react-themes?ref=sudl-readme) from Creative Tim
-- [VueJS Products](https://www.creative-tim.com/bootstrap-themes/vuejs-themes?ref=sudl-readme) from Creative Tim
-- [More products](https://www.creative-tim.com/bootstrap-themes?ref=sudl-readme) from Creative Tim
-- Check our Bundles [here](https://www.creative-tim.com/bundles??ref=sudl-readme)
-
-### Social Media
-
-### Creative Tim
-Twitter: <https://twitter.com/CreativeTim?ref=sudl-readme>
-
-Facebook: <https://www.facebook.com/CreativeTim?ref=sudl-readme>
-
-Dribbble: <https://dribbble.com/creativetim?ref=sudl-readme>
-
-Instagram: <https://www.instagram.com/CreativeTimOfficial?ref=sudl-readme>
-
-### Updivision:
-
-Twitter: <https://twitter.com/updivision?ref=sudl-readme>
-
-Facebook: <https://www.facebook.com/updivision?ref=sudl-readme>
-
-Linkedin: <https://www.linkedin.com/company/updivision?ref=sudl-readme>
-
-Updivision Blog: <https://updivision.com/blog/?ref=sudl-readme>
-
-## Credits
-
-- [Creative Tim](https://creative-tim.com/?ref=sudl-readme)
-- [UPDIVISION](https://updivision.com)

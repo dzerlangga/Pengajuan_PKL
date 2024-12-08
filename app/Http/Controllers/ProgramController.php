@@ -3,30 +3,31 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Informasi;
 use Illuminate\Http\Request;
+use App\Models\Program;
+use Carbon\Carbon;
 
-class InformasiController extends Controller
+class ProgramController extends Controller
 {
     public function index(Request $request)
     {
-        $data = Informasi::query();
+        $data = Program::query();
 
         // filter by nama
         $data->when($request->nama, function ($query) use ($request) {
             return $query->where('nama','like', '%'.$request->nama.'%');
         });
 
-        return view('informasi.index',['informasi'=>$data->get()]);
+        return view('program.index',['program'=>$data->get()]);
     }
 
     public function addForm(){
-        return view('informasi.form');
+        return view('program.form');
     }
 
     public function editForm($id){
-        $data = Informasi::where('id',$id)->first();
-        return view('informasi.form',['data'=>$data]);
+        $data = Program::where('id',$id)->first();
+        return view('program.form',['data'=>$data]);
     }
 
     public function store(Request $request)
@@ -34,18 +35,21 @@ class InformasiController extends Controller
         // Validasi data
         $validatedData = $request->validate([
             'nama' => 'required|string',
+            'start_date' => 'required|date',
+            'end_date' => 'required|date',
             'pengumuman' => 'required|string',
         ]);
 
-
-        // 1. Simpan data informasi
-        Informasi::create([
+        // 1. Simpan data program
+        Program::create([
             'nama' => $validatedData['nama'],
+            'start_date' => $validatedData['start_date'],
+            'end_date' => $validatedData['end_date'],
             'pengumuman' => $validatedData['pengumuman'],
             'status' => '0',
         ]);
 
-        return redirect('master-data/informasi')->with('success', 'Data berhasil diajukan!');
+        return redirect('master-data/program')->with('success', 'Data berhasil diajukan!');
 
     }
 
@@ -53,21 +57,25 @@ class InformasiController extends Controller
     {
         $validatedData = $request->validate([
             'nama' => 'required|string',
+            'start_date' => 'required|date',
+            'end_date' => 'required|date',
             'pengumuman' => 'required|string',
         ]);
 
-        $user = Informasi::findOrFail($id);
+        $user = Program::findOrFail($id);
         $user->update([
             'nama' => $validatedData['nama'],
+            'start_date' => $validatedData['start_date'],
+            'end_date' => $validatedData['end_date'],
             'pengumuman' => $validatedData['pengumuman'],
         ]);
 
-        return redirect('master-data/informasi')->with('success', 'Data berhasil diupdate!');
+        return redirect('master-data/program')->with('success', 'Data berhasil diupdate!');
     }
 
     public function updateStatus(Request $request,$id) {
 
-        $data = Informasi::where('status',1)->first();
+        $data = Program::where('status',1)->first();
 
 
         if ($data && $data->id != $id) {
@@ -79,7 +87,7 @@ class InformasiController extends Controller
         ]);
 
         // Temukan order berdasarkan ID dan update statusnya
-        $order = Informasi::findOrFail($id);
+        $order = Program::findOrFail($id);
         $order->update([
             'status' => $request->status
         ]);
@@ -90,9 +98,9 @@ class InformasiController extends Controller
 
     public function delete($id)
     {
-        $informasi = Informasi::findOrFail($id); // Mengambil data berdasarkan ID
-        $informasi->delete(); // Menghapus data
+        $program = Program::findOrFail($id); // Mengambil data berdasarkan ID
+        $program->delete(); // Menghapus data
 
-        return redirect('master-data/informasi')->with('success', 'informasi berhasil dihapus!');
+        return redirect('master-data/program')->with('success', 'program berhasil dihapus!');
     }
 }

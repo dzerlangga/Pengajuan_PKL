@@ -594,7 +594,7 @@
   </div> --}}
 
   <script src="https://soft-ui-dashboard-laravel.creative-tim.com/assets/js/plugins/countup.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
 
 <script>
     let data = ['draft','accept','reject'];

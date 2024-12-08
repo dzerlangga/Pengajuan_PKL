@@ -2,14 +2,20 @@
 
 @section('content')
 
+
 <div>
     <div class="row">
         <div class="col-12">
+            @if(session('success'))
+                <div class="alert alert-success fade-out text-white" id="alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
             <div class="card mb-4">
                 <div class="card-header pb-0">
                     <div class="d-flex flex-row justify-content-between">
                         <div>
-                            <h5 class="mb-0">Surat dengan status diterima</h5>
+                            <h5 class="mb-0">Surat Diterima</h5>
                         </div>
                     </div>
                 </div>
@@ -27,14 +33,19 @@
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                       Jurusan
                                     </th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                      Tanggal dibuat
+                                    </th>
                                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        Aksi
+                                        Action
                                     </th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @if (empty($surat))
-                                    @foreach ($surat as $data )
+                                @if (count($surat) === 0)
+                                    <tr class="text-center"><td class="dataTables-empty" colspan="12">Tidak ada data</td></tr>
+                                @else
+                                @foreach ($surat as $data )
                                     <tr>
                                         <td class="px-4">
                                             <p class="text-xs font-weight-bold mb-0">{{ $data->perusahaan }}</p>
@@ -47,18 +58,21 @@
                                                 {{ $data->jurusan->nama }} ({{ $data->jurusan->singkatan }})
                                             </p>
                                         </td>
+                                        <td class="px-4">
+                                            <p class="text-xs font-weight-bold mb-0">
+                                                {{ \Carbon\Carbon::parse($data->created_at)->translatedFormat('d F Y') }}
+                                            </p>
+                                        </td>
                                         <td class="text-center px-4">
-                                            <a href="#" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Edit user">
-                                                <i class="fas fa-user-edit text-secondary"></i>
+                                            <a href="{{ url('pdf/'.$data->id) }}" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Download PDF">
+                                                <i class="fa fa-solid fa-file-pdf text-secondary"></i>
                                             </a>
-                                            <span>
-                                                <i class="cursor-pointer fas fa-trash text-secondary"></i>
-                                            </span>
+                                            <a href="{{ url('persuratan/surat-accept/edit/'.$data->id) }}" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Detail data">
+                                                <i class="fas fa-eye text-secondary"></i>
+                                            </a>
                                         </td>
                                     </tr>
                                     @endforeach
-                                @else
-                                    <tr class="text-center"><td class="dataTables-empty" colspan="12">Tidak ada data</td></tr>
                                 @endif
                             </tbody>
                         </table>
@@ -68,5 +82,19 @@
         </div>
     </div>
 </div>
+
+<script>
+    window.onload = function() {
+        var alert = document.getElementById('alert-success');
+        if (alert) {
+            setTimeout(function() {
+                alert.classList.add('fade-out-hidden'); // Menambahkan kelas untuk efek fade-out
+                setTimeout(function() {
+                    alert.style.display = 'none'; // Menghilangkan alert setelah animasi selesai
+                }, 1000); // Waktu yang sama dengan durasi transisi CSS
+            }, 5000); // 5000 ms = 5 detik
+        }
+    };
+</script>
 
 @endsection

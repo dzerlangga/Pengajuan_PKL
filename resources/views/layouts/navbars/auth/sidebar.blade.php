@@ -126,11 +126,11 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link {{ (Request::is('master-data/informasi') ? 'active' : '') }}" href="{{ url('master-data/informasi') }}">
+        <a class="nav-link {{ (Request::is('master-data/program') ? 'active' : '') }}" href="{{ url('master-data/program') }}">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-                <i class="fas fa-bullhorn ps-2 pe-2 text-center text-dark {{ (Request::is('user-management') ? 'text-white' : 'text-dark') }}" style="font-size: 1rem;" aria-hidden="true"></i>
+                <i class="fas fa-th-list ps-2 pe-2 text-center text-dark {{ (Request::is('user-management') ? 'text-white' : 'text-dark') }}" style="font-size: 1rem;" aria-hidden="true"></i>
       </div>
-      <span class="nav-link-text ms-1">Informasi</span>
+      <span class="nav-link-text ms-1">Program</span>
     </a>
   </li>
             {{-- <li class="nav-item">

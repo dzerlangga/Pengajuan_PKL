@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('surats', function (Blueprint $table) {
             $table->id();
             $table->foreignId('jurusan_id')->constrained('jurusans')->onDelete('cascade');
+            $table->foreignId('program_id')->constrained('programs')->onDelete('cascade');
             $table->string('perusahaan');
             $table->string('no_surat')->nullable();
             $table->longText('alamat');

@@ -2,36 +2,6 @@
 
 @section('content')
 
-   {{-- MODAL --}}
-   <div class="modal fade" id="anggotaModal" aria-hidden="true" aria-labelledby="anggotaModalLabel" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="anggotaModalLabel">Tambah Anggota</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-            <form id="formAnggota">
-                <div class="mb-3">
-                  <label for="nama" class="form-label">Nama</label>
-                  <input type="text" name="nama" class="form-control input-anggota" id="nama" aria-describedby="namaHelp">
-                  <div id="namaHelp" class="form-text">Pastikan nama sudah benar</div>
-                </div>
-                <div class="mb-3">
-                    <label for="nis" class="form-label">NIS</label>
-                    <input type="text" name="nis" class="form-control input-anggota" id="nis" aria-describedby="nisHelp">
-                    <div id="nisHelp" class="form-text">Pastikan NIS sudah benar</div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="submit" class="btn bg-gradient-success">Simpan</button>
-            </div>
-        </form>
-      </div>
-    </div>
-</div>
-{{-- END MODAL --}}
-
 <div>
     <div class="row">
         <div class="col-12">
@@ -39,7 +9,7 @@
                 <div class="card-header pb-0">
                     <div class="d-flex flex-row justify-content-between">
                         <div>
-                            <h5 class="mb-0">{{ isset($data) ? "Detail" : "Tambah" }} Surat Pengajuan</h5>
+                            <h5 class="mb-0">Detail Surat Pengajuan</h5>
                         </div>
                     </div>
                 </div>
@@ -47,22 +17,8 @@
                     <form action="{{ route('surat.store') }}" method="POST" class="row g-3" id="form-add-surat">
                         @csrf
                         <div class="col-md-6 form-group">
-                            <label for="program" class="form-label">Program</label>
-                            <select id="program" name="program" class="form-select" {{ isset($data) ? 'disabled': '' }} required>
-                              <option value="" selected disabled>Pilih Program</option>
-                              @foreach ($program as $value)
-                                  <option value="{{$value->id}}"
-                                    @isset($data)
-                                      {{ $data->jurusan_id === $value->id ? 'selected' : '' }}
-                                    @endisset>
-                                  {{ $value->nama }}
-                                  </option>
-                              @endforeach
-                            </select>
-                        </div>
-                        <div class="col-md-6 form-group">
                             <label for="jurusan" class="form-label">Jurusan</label>
-                            <select id="jurusan" name="jurusan" class="form-select" {{ isset($data) ? 'disabled': '' }} required>
+                            <select id="jurusan" name="jurusan" class="form-select" {{ isset($id) ? 'disabled': '' }} required>
                               <option value="" selected disabled>Pilih Jurusan</option>
                               @foreach ($jurusan as $value)
                                   <option value="{{$value->id}}"
@@ -73,20 +29,18 @@
                                   </option>
                               @endforeach
                             </select>
-                        </div>
-                        <div class="col-md-6 form-group">
+                          </div>
+                          <div class="col-md-6 form-group">
                             <label for="no_hp" class="form-label">No HP/WA</label>
                             <input type="text" id="no_hp" name="no_hp" class="form-control" value="{{ old('no_hp', $data->no_hp ?? '') }}" {{ isset($id) ? 'disabled': '' }} required>
-                        </div>
-                        <div class="col-md-6 form-group">
-                          <label for="inputEmail4" class="form-label">Nama Perusahaan (Harus Lengkap)</label>
+                          </div>
+                        <div class="col-md-12 form-group">
+                          <label for="inputEmail4" class="form-label">Nama Perusahaan</label>
                           <input type="text" id="nama_perusahaan" name="perusahaan" class="form-control" value="{{ old('perusahaan', $data->perusahaan ?? '') }}" {{ isset($id) ? 'disabled': '' }} required>
-                          <span class="info">(contoh : PT Baraya Telematika, contoh : Bengkel Rahmat Putra )</span>
                         </div>
                         <div class="col-md-12 form-group">
-                            <label for="alamat" class="form-label">Alamat Perusahaan (Harus Lengkap)</label>
+                            <label for="alamat" class="form-label">Alamat Perusahaan</label>
                             <textarea id="alamat" name="alamat" class="form-control" {{ isset($id) ? 'disabled': '' }} required>{{ old('alamat', $data->alamat ?? '') }}</textarea>
-                            <span class="info">(contoh : Jl. Sukasari no 12/78 Kel Gaga Kec Cijawura Kota Bandung)</span>
                         </div>
 
                         <hr />
@@ -100,9 +54,6 @@
                             @endif
                         </div>
                         <div class="table-responsive p-0">
-                            <div class="w-100 text-start px-4">
-                                <span class="text-danger text-start" style="font-size: 10px">*MAX ANGGOTA ADALAH 6 ORANG</span>
-                            </div>
                             <table class="table align-items-center mb-0" id="table-anggota">
                                 <thead>
                                     <tr>
@@ -149,7 +100,7 @@
     let body_table = $('#body_table');
     let inputs = document.querySelectorAll('.input-anggota');
     let data_anggota = {!! json_encode($data->anggota ?? []) !!}
-    let id_data = @json($id ?? 0);
+    let id_data = {!! $id ?? '' !!};
     var $ = jQuery.noConflict();
 
     // fungsi jika data anggota tersedia akan merender ke table yang tersedia
@@ -212,8 +163,8 @@
 
         data_anggota = [...data_anggota, data];
         // console.log(data_anggota);
-        anggotaModal.modal('hide');
         renderTable(data)
+        anggotaModal.modal('hide');
     })
 
     // fungsi untuk mengecek form anggota sudah terisi atau belum
@@ -264,31 +215,21 @@
     // update status surat
     function updateStatus(type) {
         let status = type ? 'accept' : 'reject';
-
-        Swal.fire({
-          icon: "warning",
-          title: `Apakah data ini akan ${type ? 'diterima' : 'ditolak'}?`,
-          showCancelButton: true,
-          confirmButtonText: type ? 'Terima' : 'Tolak',
-        }).then((result) => {
-          if (result.isConfirmed) {
-            $.ajax({
-                url: "{{ route('surat.editStatus', $id ?? '') }}",
-                type: 'PUT',
-                data: {
-                    status
-                },
-                success: function (response) {
-                    Swal.fire(`Data Berhasil ${type ? 'Diterima' : 'Ditolak'}!`, "", "success");
-                    window.location.href = "{{ route('surat',['status'=>'surat-draft']) }}";
-                },
-                error: function (xhr) {
-                    alert('Failed to update status');
-                }
-            });
-          }
+        // console.log(status);
+        $.ajax({
+            url: "{{ route('surat.editStatus', $id ?? '') }}",
+            type: 'PUT',
+            data: {
+                status
+            },
+            success: function (response) {
+                alert(response.message); // Opsional: Menampilkan pesan sukses
+                window.location.href = "{{ route('surat',['status'=>'surat-draft']) }}";
+            },
+            error: function (xhr) {
+                alert('Failed to update status');
+            }
         });
-
     }
 
 

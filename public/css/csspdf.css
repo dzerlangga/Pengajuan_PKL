@@ -1,0 +1,64 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+.header {
+    border-bottom: 5px solid #333;
+    padding-bottom: 2px
+}
+.header img {
+    height: 160px;
+    width: fit-content;
+}
+.middle{
+    text-align: center;
+}
+.header h6{
+    font-size: 0.73rem
+}
+.header h3{
+    font-size: 1.6rem
+}
+.header h5{
+    font-size: 0.7rem
+}
+.header h4{
+    font-size: 0.8rem
+}
+.main .now-date{
+    display: flex;
+    justify-content: end;
+    margin: 0px 20px 0 20px
+}
+.main table tr {
+    vertical-align: top
+}
+.pengumuman{
+    text-align: justify;
+}
+
+.text-justy{
+    text-align: justify
+}
+
+.container-company{
+    display: flex;
+    justify-content: end;
+}
+.company{
+    display: flex;
+}
+.container-company .company .text-yth{
+    margin: 10px 10px 0 0;
+}
+.table-siswa{
+    text-align: center
+}
+.table-siswa td{
+    border: 1px solid black;
+    border-bottom: 0px solid black;
+    border-top: 0px solid black;
+    padding: 0px 3px 0px 3px;
+}

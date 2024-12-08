@@ -41,6 +41,8 @@
         <div>
             <form action="{{ route('pengajuan.store') }}" method="POST" class="my-4 rounded" style="background-color: rgba(237, 237, 237, 0.9); color:rgb(68, 68, 68)" id="regForm">
                 @csrf
+                <input type="text" value="{{ $id_program ?? '' }}" class="form-control" id="program" hidden name="program">
+
                 <!-- Circles which indicates the steps of the form: -->
                 <div style="text-align:center;margin-bottom:25px;">
                     <span class="step finish align-content-center">1</span>

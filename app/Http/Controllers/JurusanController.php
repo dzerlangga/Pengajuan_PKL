@@ -10,19 +10,16 @@ class JurusanController extends Controller
 {
     public function index(Request $request)
     {
-        $data = Jurusan::query();
+        $search = $request->input('search', '');
+        // $data = Jurusan::query();
+        $data = Jurusan::where('nama', 'like', "%{$search}%")
+        ->orWhere('singkatan', 'like', "%{$search}%");
 
-        // filter by nama
-        $data->when($request->nama, function ($query) use ($request) {
-            return $query->where('nama','like', '%'.$request->nama.'%');
-        });
+        if ($request->ajax()) {
+            return view('jurusan.table', ['jurusan'=>$data->orderBy('created_at', 'desc')->paginate(5)])->render();
+        }
 
-        //filter by status
-        $data->when($request->status, function ($query) use ($request) {
-            return $query->where('status','==', '%'.$request->status.'%');
-        });
-
-        return view('jurusan.index',['jurusan'=>$data->orderBy('created_at', 'desc')->get()]);
+        return view('jurusan.index',['jurusan'=>$data->orderBy('created_at', 'desc')->paginate(5)]);
     }
 
     public function addForm(){
