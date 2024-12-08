@@ -77,12 +77,6 @@
                         </div>
                         <div class="col-12 text-end">
                             <a href="{{ url('persuratan/surat-draft') }}" class="btn btn-danger">Kembali</a>
-                       @if (isset($id))
-                       <button type="button" onclick="updateStatus()" class="btn btn-danger">Tolak</button>
-                       <button type="button" onclick="updateStatus('accept')" class="btn btn-success">Terima</button>
-                         @else
-                             <button type="submit" class="btn btn-success">Simpan</button>
-                             @endif
                         </div>
                       </form>
                 </div>
