@@ -122,7 +122,7 @@
             <tr style="margin: 0;padding:0">
                 <td style="margin: 0;padding:0" class="label" width="10%" >Nomor</td>
                 <td style="margin: 0;padding:0" width="5%">:</td>
-                <td style="margin: 0;padding:0" width="100%"><b>......../SMK-A1/700-1/.......-CADISDIKWIL VIII</b></td>
+                <td style="margin: 0;padding:0" width="100%"><b>421.5/SMK-A1/700-1/.......-CADISDIKWIL VIII</b></td>
             </tr>
             <tr style="margin: 0;padding:0">
                 <td style="margin: 0;padding:0" class="label" width="10%">Lampiran</td>
@@ -191,7 +191,7 @@
             <tr width="30%">
                 <td class="label" width="10%">Nomor</td>
                 <td width="5%">:</td>
-                <td width="100%"><b>......../SMK-A1/700-1/.......-CADISDIKWIL VIII</b></td>
+                <td width="100%"><b>421.5/SMK-A1/700-1/.......-CADISDIKWIL VIII</b></td>
             </tr>
             <tr>
                 <td class="label" width="15%">Tanggal</td>
@@ -245,7 +245,7 @@
        {{-- PAGE 3 --}}
        <div style="page-break-before: always">
         <p style="margin: 0; padding: 0; margin-top: 30px; text-align:center; font-size: 20px"><b>SURAT KETERANGAN DITERIMA</b></p>
-        <p class="text-justy">Berdasarkan surat permohonan PKL Nomor : ......../SMK-A1/700-1/.......-CADISDIKWIL VIII Maka dengan ini kami <b> Bersedia / Tidak Bersedia </b> untuk menerima Siswa :</p>
+        <p class="text-justy">Berdasarkan surat permohonan PKL Nomor : 421.5/SMK-A1/700-1/.......-CADISDIKWIL VIII Maka dengan ini kami <b> Bersedia / Tidak Bersedia </b> untuk menerima Siswa :</p>
         <table border="1" class="table-siswa" style="border-collapse:collapse">
             <tr>
                 <th style="border: 1px solid black">No.</th>

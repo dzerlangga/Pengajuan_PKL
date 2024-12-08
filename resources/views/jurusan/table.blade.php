@@ -16,10 +16,10 @@
         </tr>
     </thead>
     <tbody>
-        @if (count($jurusan) === 0)
+        @if (count($datas) === 0)
             <tr class="text-center"><td class="dataTables-empty" colspan="3">Tidak ada data</td></tr>
         @else
-        @foreach ($jurusan as $data )
+        @foreach ($datas as $data )
             <tr>
                 <td class="ps-4">
                     <p class="text-xs font-weight-bold mb-0">{{ $data->nama }}</p>
@@ -46,5 +46,5 @@
 </table>
  {{-- Pagination --}}
  <div style="justify-self: right" class="me-4 mt-4">
-  {!! $jurusan->links() !!}
+  {!! $datas->links() !!}
  </div>

@@ -8,13 +8,30 @@ use App\Models\Program;
 use App\Models\Surat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class SuratController extends Controller
 {
-    public function index($status){
+    public function index(Request $request, $status){
+
+        $search = $request->input('search', '');
+
         $set_status = explode('-', $status);
-        $data = Surat::with('jurusan')->where('status', $set_status[1])->orderBy('created_at', 'desc')->get();
-        return view('persuratan.'.$set_status[1].'.index',['surat'=>$data]);
+        $data = Surat::with('jurusan')->where('status', $set_status[1])->where('perusahaan', 'like', "%{$search}%")->orderBy('created_at', 'desc');
+        // $data = DB::table('surats as s')
+        //         ->join('jurusans as j', 's.jurusan_id', '=', 'j.id') // Pastikan alias tabel "j" digunakan
+        //         ->select('s.*', 'j.nama as jurusan_nama','j.singkatan as jurusan_singkatan') // Pastikan kolom "nama" benar
+        //         ->where('s.status', '=', $set_status[1])
+        //         ->where('s.perusahaan', 'like', "%{$search}%")
+        //         ->orWhere('j.nama', 'like', "%{$search}%")
+        //         ->orWhere('j.singkatan', 'like', "%{$search}%")
+        //         ->orderBy('created_at', 'desc');
+
+        if ($request->ajax()) {
+            return view('persuratan.'.$set_status[1].'.table', ['datas'=>$data->paginate(5)])->render();
+        }
+
+        return view('persuratan.'.$set_status[1].'.index',['datas'=>$data->paginate(5)]);
     }
 
     public function addForm(){
@@ -83,5 +100,13 @@ class SuratController extends Controller
             }
 
             return redirect()->route('program')->with('success', 'Data berhasil diajukan!');
+    }
+
+    public function delete($id)
+    {
+        $surat = Surat::findOrFail($id); // Mengambil data berdasarkan ID
+        $surat->delete(); // Menghapus data
+
+        return redirect('persuratan/surat-draft')->with('success', 'Surat berhasil dihapus!');
     }
 }

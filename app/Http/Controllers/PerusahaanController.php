@@ -10,14 +10,15 @@ class PerusahaanController extends Controller
 {
     public function index(Request $request)
     {
-        $data = Perusahaan::query(); //memanggil data perusahaaan
+        $search = $request->input('search', '');
 
-        // filter by nama
-        $data->when($request->nama, function ($query) use ($request) {
-            return $query->where('nama','like', '%'.$request->nama.'%');
-        });
+        $data = Perusahaan::where('nama', 'like', "%{$search}%");
 
-        return view('perusahaan.index',['perusahaan'=>$data->orderBy('created_at', 'desc')->get()]); //menuju halaman utama perusahaan dan menampilkan data
+        if ($request->ajax()) {
+            return view('perusahaan.table', ['datas'=>$data->orderBy('created_at', 'desc')->paginate(5)])->render();
+        }
+
+        return view('perusahaan.index',['datas'=>$data->orderBy('created_at', 'desc')->paginate(5)]); //menuju halaman utama perusahaan dan menampilkan data
     }
 
     public function addForm(){

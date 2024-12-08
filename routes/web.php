@@ -9,7 +9,6 @@ use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\SuratController;
 use App\Http\Controllers\PdfController;
 use Illuminate\Support\Facades\Route;
-use Carbon\Carbon;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +34,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('surat-draft/update', [SuratController::class, 'update'])->name('surat.store');
         Route::post('surat-draft/store', [SuratController::class, 'store'])->name('surat.store');
         Route::put('surat-draft/status/{id}', [SuratController::class,'editStatus'])->name('surat.editStatus');
+        Route::delete('surat-draft/delete/{id}', [SuratController::class, 'delete'])->name('surat.delete');
+
     });
 
     Route::prefix('master-data')->group(function () {
@@ -79,8 +80,3 @@ Route::group(['middleware' => 'guest'], function () {
 });
 
 Route::get('/pengajuanpkl', [SiswaController::class, 'index'])->name('program');
-Route::get('/expdf', function() {
-    Carbon::setLocale('id'); // Set locale ke Indonesia
-    $now = Carbon::now()->translatedFormat('d F Y');
-    return view('pdf', ['now' => $now]);
-});
