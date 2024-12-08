@@ -11,14 +11,15 @@ class ProgramController extends Controller
 {
     public function index(Request $request)
     {
-        $data = Program::query();
+        $search = $request->input('search', '');
 
-        // filter by nama
-        $data->when($request->nama, function ($query) use ($request) {
-            return $query->where('nama','like', '%'.$request->nama.'%');
-        });
+        $data = Program::where('nama', 'like', "%{$search}%");
 
-        return view('program.index',['program'=>$data->get()]);
+        if ($request->ajax()) {
+            return view('program.table', ['datas'=>$data->orderBy('created_at', 'desc')->paginate(5)])->render();
+        }
+
+        return view('program.index',['datas'=>$data->paginate(5)]);
     }
 
     public function addForm(){

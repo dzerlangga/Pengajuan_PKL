@@ -26,7 +26,7 @@
                             <input type="text" id="search" name="search" placeholder="Cari Data..." class="form-control">
                           </div>
                     <div class="table-responsive p-0" id="data-container">
-                        @include('jurusan.table', ['jurusan' => $jurusan])
+                        @include('jurusan.table', ['datas' => $datas])
                     </div>
                 </div>
             </div>

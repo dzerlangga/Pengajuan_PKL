@@ -16,10 +16,10 @@ class JurusanController extends Controller
         ->orWhere('singkatan', 'like', "%{$search}%");
 
         if ($request->ajax()) {
-            return view('jurusan.table', ['jurusan'=>$data->orderBy('created_at', 'desc')->paginate(5)])->render();
+            return view('jurusan.table', ['datas'=>$data->orderBy('created_at', 'desc')->paginate(5)])->render();
         }
 
-        return view('jurusan.index',['jurusan'=>$data->orderBy('created_at', 'desc')->paginate(5)]);
+        return view('jurusan.index',['datas'=>$data->orderBy('created_at', 'desc')->paginate(5)]);
     }
 
     public function addForm(){

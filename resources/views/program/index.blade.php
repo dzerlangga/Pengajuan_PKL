@@ -15,67 +15,12 @@
                     </div>
                 </div>
                 <div class="card-body px-0 pt-0 pb-2">
-                    <div class="table-responsive p-0">
-                        <table class="table align-items-center mb-0">
-                            <thead>
-                                <tr>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        Nama
-                                    </th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        Tanggal Mulai
-                                    </th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        Tanggal Selesai
-                                    </th>
-                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        Status
-                                    </th>
-                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        Action
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @if (count($program) === 0)
-                                 <tr class="text-center"><td class="dataTables-empty" colspan="3">Tidak ada data</td></tr>
-                                @else
-                                    @foreach ($program as $data )
-                                        <tr>
-                                            <td class="ps-4">
-                                                <p class="text-xs font-weight-bold mb-0">{{ $data->nama }}</p>
-                                            </td>
-                                            <td class="ps-4">
-                                                <p class="text-xs font-weight-bold mb-0">{{ $data->start_date }}</p>
-                                            </td>
-                                            <td class="ps-4">
-                                                <p class="text-xs font-weight-bold mb-0">{{ $data->end_date }}</p>
-                                            </td>
-                                            <td class="text-center">
-                                                <p class="text-lg font-weight-bold mb-0">
-                                                    <span id="statusLabel{{ $loop->index }}" class="badge {{$data->status ? 'bg-success' : 'bg-secondary'}}">{{$data->status ? 'Aktif' : 'Non Aktif'}}</span>
-                                                </p>
-                                            </td>
-                                            <td class="text-center">
-                                                <a href="javascript:void(0)" onclick="updateOrderStatus({{ $loop->index }},{{ $data->id }}, this)" value_status="{{ $data->status }}" data-bs-toggle="tooltip" data-bs-original-title="Active/NonActive data">
-                                                    <i id='icon{{ $loop->index }}' class="fas {{$data->status ? 'fa-window-close' : 'fa-check-square'}} text-secondary"></i>
-                                                </a>
-                                                <a href="{{ url('master-data/program/edit/'.$data->id ) }}" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Detail data">
-                                                     <i class="fas fa-user-edit text-secondary"></i>
-                                                </a>
-                                                <a href="#" data-bs-toggle="tooltip" data-bs-original-title="Hapus data" onclick="deleted(event,{{ $data->id }})">
-                                                    <i class="cursor-pointer fas fa-trash text-secondary"></i>
-                                                </a>
-                                                <form action="{{ route('jurusan.delete', $data->id) }}" method="POST" id="deleteForm{{ $data->id }}" style="display: none">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                </form>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                @endif
-                            </tbody>
-                        </table>
+                    <!-- Form Pencarian -->
+                    <div class="col-md-3 form-group mb-3 px-3 pt-3">
+                        <input type="text" id="search" name="search" placeholder="Cari Data..." class="form-control">
+                      </div>
+                    <div class="table-responsive p-0" id="data-container">
+                        @include('program.table', ['datas' => $datas])
                     </div>
                 </div>
             </div>
@@ -85,6 +30,41 @@
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
+    $(document).ready(function () {
+            let value_search = ''
+            // Event pagination
+            $(document).on('click', '.pagination a', function (e) {
+                e.preventDefault();
+                const url = $(this).attr('href'); // URL dari link pagination
+                fetchData(url);
+            });
+
+            $('#search').on('change', function (e) {
+                setTimeout(() => {
+                    e.preventDefault();
+                    value_search = e.target.value;
+                    const url = `${window.location.href}?search=` + encodeURIComponent(e.target.value);
+                    fetchData(url);
+                }, 1000);
+            });
+    });
+
+    function fetchData(url) {
+                $.ajax({
+                    url: url,
+                    type: "GET",
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest' // Ini memberitahu server bahwa permintaan adalah AJAX
+                    },
+                    success: function (data) {
+                        $('#data-container').html(data); // Update kontainer data
+                    },
+                    error: function () {
+                        alert('Terjadi kesalahan saat memuat data.');
+                    }
+                });
+    }
+
     function updateOrderStatus(index,orderId,props) {
         let newStatus = props.getAttribute("value_status");
         let status = parseInt(newStatus, 2) === 1 ? 0 : 1;
@@ -138,6 +118,41 @@
         }
       });
 
+    }
+
+    $(document).ready(function () {
+            let value_search = ''
+            // Event pagination
+            $(document).on('click', '.pagination a', function (e) {
+                e.preventDefault();
+                const url = $(this).attr('href'); // URL dari link pagination
+                fetchData(url);
+            });
+
+            $('#search').on('change', function (e) {
+                setTimeout(() => {
+                    e.preventDefault();
+                    value_search = e.target.value;
+                    const url = `${window.location.href}?search=` + encodeURIComponent(e.target.value);
+                    fetchData(url);
+                }, 1000);
+            });
+    });
+
+    function fetchData(url) {
+                $.ajax({
+                    url: url,
+                    type: "GET",
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest' // Ini memberitahu server bahwa permintaan adalah AJAX
+                    },
+                    success: function (data) {
+                        $('#data-container').html(data); // Update kontainer data
+                    },
+                    error: function () {
+                        alert('Terjadi kesalahan saat memuat data.');
+                    }
+                });
     }
 </script>
 
