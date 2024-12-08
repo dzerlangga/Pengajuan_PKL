@@ -13,7 +13,6 @@ class Jurusan extends Model
         'nama','singkatan'
     ];
 
-
     public function surat()
     {
         return $this->hasMany(Surat::class);

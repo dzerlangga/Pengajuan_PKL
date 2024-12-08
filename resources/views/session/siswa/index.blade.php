@@ -30,7 +30,7 @@
             </div>
             @if ($text)
             <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="read" name="read">
+                <input style="appearance: auto" type="checkbox" class="form-check-input" id="read" name="read">
                 <label for="read" class="text-danger">TELAH DIBACA</label><br>
             </div>
             <div class="text-center mt-4">

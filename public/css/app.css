@@ -108,3 +108,8 @@
     text-indent: 45px;
     text-align: justify;
 }
+
+.page-item.active .page-link{
+    background-color: #5a9adb !important;
+    border-color:#61a8ee !important;
+}

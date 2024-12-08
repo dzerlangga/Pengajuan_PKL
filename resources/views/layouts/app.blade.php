@@ -16,8 +16,8 @@
   <!-- Nucleo Icons -->
   <link href="{{ url('assets/css/nucleo-icons.css') }}" rel="stylesheet" />
   <link href="{{ url('assets/css/nucleo-svg.css') }}" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <!-- Font Awesome Icons -->
-  <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
   <link href="{{ url('assets/css/nucleo-svg.css') }}" rel="stylesheet" />
   <link href="{{ url('css/app.css') }}" rel="stylesheet" />
   <!-- CSS Files -->
@@ -34,13 +34,15 @@
   @endguest
 
     <!--   Core JS Files   -->
-    <script src="{{ url('assets/js/core/popper.min.js') }}"></script>
     <script src="{{ url('assets/js/core/bootstrap.min.js') }}"></script>
+    <script src="{{ url('assets/js/core/popper.min.js') }}"></script>
     <script src="{{ url('assets/js/plugins/perfect-scrollbar.min.js') }}"></script>
     <script src="{{ url('assets/js/plugins/chartjs.min.js') }}"></script>
     <script src="{{ url('assets/js/plugins/smooth-scrollbar.min.js') }}"></script>
     <script src="{{ url('assets/js/plugins/fullcalendar.min.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/solid.js" integrity="sha512-wTKWhN+VZ9nkKVKB7LqTQnPKKgX837ydhwB4qg5a2eW2+Aw/OyS00j7EBBWZvT1ph8NEIJfxxPcr+RdMi7ZT8A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 
     @stack('dashboard')
   <script>
