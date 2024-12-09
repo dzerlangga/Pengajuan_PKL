@@ -211,7 +211,6 @@
         }
 
         data_anggota = [...data_anggota, data];
-        // console.log(data_anggota);
         anggotaModal.modal('hide');
         renderTable(data)
     })

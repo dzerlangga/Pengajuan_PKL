@@ -32,7 +32,8 @@
                 </td>
                 <td class="px-4">
                     <p class="text-xs font-weight-bold mb-0">
-                        {{ $data->jurusan_nama }} ({{ $data->jurusan_singkatan }})
+                        {{-- {{ $data->jurusan_nama }} ({{ $data->jurusan_singkatan }}) --}}
+                        {{ $data->jurusan->nama }} ({{ $data->jurusan->singkatan }})
                     </p>
                 </td>
                 <td class="px-4">

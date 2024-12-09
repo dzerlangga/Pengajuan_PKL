@@ -19,7 +19,7 @@ class UserSeeder extends Seeder
             'id' => 1,
             'name' => 'admin',
             'email' => 'admin@smkangkasa1margahayu.com',
-            'password' => Hash::make('admin'),
+            'password' => Hash::make('angkasaadmin'),
             'created_at' => now(),
             'updated_at' => now()
         ]);

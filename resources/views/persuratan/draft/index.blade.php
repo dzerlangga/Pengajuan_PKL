@@ -65,7 +65,6 @@
                         'X-Requested-With': 'XMLHttpRequest' // Ini memberitahu server bahwa permintaan adalah AJAX
                     },
                     success: function (data) {
-                        console.log(data);
 
                         $('#data-container').html(data); // Update kontainer data
                     },

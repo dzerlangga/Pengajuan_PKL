@@ -154,7 +154,6 @@
     // update status surat
     function updateStatus(type) {
         let status = type ? 'accept' : 'reject';
-        // console.log(status);
         $.ajax({
             url: "{{ route('surat.editStatus', $id ?? '') }}",
             type: 'PUT',

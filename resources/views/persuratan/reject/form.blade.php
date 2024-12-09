@@ -156,7 +156,6 @@
         }
 
         data_anggota = [...data_anggota, data];
-        // console.log(data_anggota);
         renderTable(data)
         anggotaModal.modal('hide');
     })
@@ -209,7 +208,6 @@
     // update status surat
     function updateStatus(type) {
         let status = type ? 'accept' : 'reject';
-        // console.log(status);
         $.ajax({
             url: "{{ route('surat.editStatus', $id ?? '') }}",
             type: 'PUT',

@@ -26,9 +26,17 @@ class SiswaController extends Controller
         return view('session.siswa.form',['jurusan'=>$data,'id_program'=>$id_program]);
     }
 
-    public function rekomendasi()
+    public function rekomendasi(Request $request)
     {
-        $data = Perusahaan::orderBy('nama', 'asc')->get();
-        return view('session.siswa.rekomendasi',['data'=>$data]);
+        $search = $request->input('search', '');
+
+        $data = Perusahaan::where('nama', 'like', "%{$search}%")->orderBy('nama', 'asc');
+
+        if ($request->ajax()) {
+            return view('session.siswa.tableRekomendasi', ['datas'=>$data->paginate(5)])->render();
+        }
+
+        $data = Perusahaan::select('nama','website','alamat')->orderBy('nama', 'asc')->paginate(5);
+        return view('session.siswa.rekomendasi',['datas'=>$data]);
     }
 }
