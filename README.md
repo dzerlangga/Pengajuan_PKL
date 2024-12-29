@@ -91,14 +91,13 @@ Besides the dashboard, the auth pages, the billing and table pages, there is als
 | [![HTML](https://s3.amazonaws.com/creativetim_bucket/products/450/thumb/opt_sd_free_thumbnail.jpg)](https://www.creative-tim.com/product/soft-ui-dashboard) | [![Laravel](https://s3.amazonaws.com/creativetim_bucket/products/602/thumb/soft-ui-dashboard-laravel.jpg?1647531884)](https://www.creative-tim.com/product/soft-ui-dashboard-laravel)  | 
 
 ## Demo
-| Register | Login | Dashboard |
-| --- | --- | ---  |
-| [<img src="https://github.com/creativetimofficial/public-assets/blob/master/soft-ui-design-system-laravel/Register.png" width="322" />](https://soft-ui-dashboard-laravel.creative-tim.com/sign-up) | [<img src="https://github.com/creativetimofficial/public-assets/blob/master/soft-ui-design-system-laravel/Login.png?raw=true" width="322" />](https://soft-ui-dashboard-laravel.creative-tim.com/login)  | [<img src="https://github.com/creativetimofficial/public-assets/blob/master/soft-ui-design-system-laravel/Dashboard.png?raw=true" width="322" />](https://soft-ui-dashboard-laravel.creative-tim.com/dashboard)
+| Login | Dashboard |
+| --- | ---  |
+| [<img src="https://github.com/dzerlangga/Pengajuan_PKL/blob/163f5e3ec4223841edd215582184b5e722ccb0a7/public/assets/img/example/login.png" width="322" />](https://github.com/dzerlangga/Pengajuan_PKL/blob/163f5e3ec4223841edd215582184b5e722ccb0a7/public/assets/img/example/login.png)  | [<img src="https://github.com/dzerlangga/Pengajuan_PKL/blob/163f5e3ec4223841edd215582184b5e722ccb0a7/public/assets/img/example/dashboard.png" width="322" />](https://github.com/dzerlangga/Pengajuan_PKL/blob/163f5e3ec4223841edd215582184b5e722ccb0a7/public/assets/img/example/dashboard.png)
 
-| Forgot Password Page | Reset Password Page | Profile Page  |
-| --- | --- | ---  |
-| [<img src="https://github.com/creativetimofficial/public-assets/blob/master/soft-ui-design-system-laravel/Forgot-password.png" width="320" />](https://soft-ui-dashboard-laravel.creative-tim.com/login/forgot-password)  | [<img src="https://github.com/creativetimofficial/public-assets/blob/master/soft-ui-design-system-laravel/Login.png" width="312" />](https://soft-ui-dashboard-laravel.creative-tim.com/) | [<img src="https://github.com/creativetimofficial/public-assets/blob/master/soft-ui-design-system-laravel/Profile.png" width="330" />](https://soft-ui-dashboard-laravel.creative-tim.com/laravel-user-profile)
-[View More](https://soft-ui-dashboard-laravel.creative-tim.com/dashboard)
+| Forgot Password Page | Reset Password Page |
+| --- | --- |
+| [<img src="https://github.com/creativetimofficial/public-assets/blob/master/soft-ui-design-system-laravel/Forgot-password.png" width="320" />](https://soft-ui-dashboard-laravel.creative-tim.com/login/forgot-password)  | [<img src="https://github.com/creativetimofficial/public-assets/blob/master/soft-ui-design-system-laravel/Login.png" width="312" />](https://soft-ui-dashboard-laravel.creative-tim.com/)
 
 ## Documentation
 The documentation for the Soft UI Dashboard Laravel is hosted at our [website](https://soft-ui-dashboard-laravel.creative-tim.com/documentation/getting-started/overview.html).
@@ -411,6 +410,3 @@ At present, we officially aim to support the last two versions of the following 
 
 ## Requaired PHP Version
 - ">= 8.2.0"
-
-## How To Install
-
