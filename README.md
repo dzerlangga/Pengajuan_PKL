@@ -93,7 +93,7 @@ Besides the dashboard, the auth pages, the billing and table pages, there is als
 ## Demo
 | Login | Dashboard | Pengajuan |
 | --- | ---  | --- |
-| [<img src="https://github.com/dzerlangga/Pengajuan_PKL/blob/master/public/assets/img/example/login.png" width="322" />](https://github.com/dzerlangga/Pengajuan_PKL/blob/master/public/assets/img/example/login.png)  | [<img src="https://github.com/dzerlangga/Pengajuan_PKL/blob/master/public/assets/img/example/dashboard.png" width="322" />](https://github.com/dzerlangga/Pengajuan_PKL/blob/master/public/assets/img/example/dashboard.png)  | [<img src="https://github.com/dzerlangga/Pengajuan_PKL/blob/master/public/assets/img/example/pengajuan_surat" width="322" />](https://github.com/dzerlangga/Pengajuan_PKL/blob/master/public/assets/img/example/pengajuan_surat.png)
+| [<img src="https://github.com/dzerlangga/Pengajuan_PKL/blob/master/public/assets/img/example/login.png" width="322" />](https://github.com/dzerlangga/Pengajuan_PKL/blob/master/public/assets/img/example/login.png)  | [<img src="https://github.com/dzerlangga/Pengajuan_PKL/blob/master/public/assets/img/example/dashboard.png" width="322" />](https://github.com/dzerlangga/Pengajuan_PKL/blob/master/public/assets/img/example/dashboard.png)  | [<img src="https://github.com/dzerlangga/Pengajuan_PKL/blob/master/public/assets/img/example/pengajuan_surat.png" width="322" />](https://github.com/dzerlangga/Pengajuan_PKL/blob/master/public/assets/img/example/pengajuan_surat.png)
 
 | Forgot Password Page | Reset Password Page |
 | --- | --- |
