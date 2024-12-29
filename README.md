@@ -1,38 +1,11 @@
-# [Soft UI Dashboard Laravel](https://soft-ui-dashboard-laravel.creative-tim.com/login)
+# [APLIKASI PENGAJUAN PKL]
 
 ![version](https://img.shields.io/badge/version-1.0.0-blue.svg) 
 ![license](https://img.shields.io/badge/license-MIT-blue.svg)
 [![GitHub issues open](https://img.shields.io/github/issues/creativetimofficial/soft-ui-dashboard-laravel.svg)](https://github.com/creativetimofficial/soft-ui-dashboard-laravel/issues?q=is%3Aopen+is%3Aissue) 
 [![GitHub issues closed](https://img.shields.io/github/issues-closed-raw/creativetimofficial/soft-ui-dashboard-laravel.svg)](https://github.com/creativetimofficial/soft-ui-dashboard-laravel/issues?q=is%3Aissue+is%3Aclosed)
 
-
-*Frontend version*: Soft UI Dashboard v1.0.0. More info at https://www.creative-tim.com/product/soft-ui-dashboard
-
-[<img src="https://s3.amazonaws.com/creativetim_bucket/products/602/original/soft-ui-dashboard-laravel.jpg" width="100%" />](https://soft-ui-dashboard-laravel.creative-tim.com/dashboard)
-  
-
-## Free Frontend Web App for Laravel
-What happens when you combine Soft UI, one of the hottest design trends right now, and Laravel?  We've partnered with [UPDIVISION](https://updivision.com/) to create the ultimate design & development toolbox. 
-
-Soft UI Dashboard Laravel comes with dozens of handcrafted UI elements tailored for Bootstrap 5 and an out of the box Laravel backend.
-
-## What am I getting?
-You're getting a multi-purpose tool for building complex apps.
-
-Soft UI Dashboard PRO Laravel at a glance:
-* 70 handcrafted UI components. From buttons and inputs to navbars and cards, everything is designed to create visually cohesive interfaces.  
-* 7 example pages to get you started
-* fully-functional authentication system, register and user profile editing features built with Laravel
-* Documentation for each component so you can get started fast
-
-## Free for personal and commercial projects
-Whether you're working on a side project or delivering to a client, we've got you covered. Soft UI Dashboard Laravel is released under MIT license, so you can use it both for personal and commercial projects for free. All you need to do is start coding. 
-
-
-## Detailed documentation and example pages
-We also included detailed documentation for every component and feature so you can follow along. The pre-built example pages give you a quick glimpse of what Soft UI Dashboard Laravel has to offer so you can get started in no time. 
-
-If you want to get more features, go PRO with [Soft UI Dashboard PRO Laravel](https://www.creative-tim.com/product/soft-ui-dashboard-pro-laravel).
+[<img src="https://s3.amazonaws.com/creativetim_bucket/products/602/original/soft-ui-dashboard-laravel.jpg" width="100%" />](https://soft-ui-dashboard-laravel.creative-tim.com/dashboard) 
 
 ## Table of Contents
 
@@ -40,21 +13,11 @@ If you want to get more features, go PRO with [Soft UI Dashboard PRO Laravel](ht
 * [Installation](#installation)
 * [Usage](#usage)
 * [Versions](#versions)
-* [Demo](#demo)
 * [Documentation](#documentation)
 * [Login](#login)
-* [Register](#register)
-* [Forgot Password](#forgot-password)
-* [Reset Password](#reset-password)
-* [User Profile](#user-profile)
 * [Dashboard](#dashboard)
-* [File Structure](#file-structure)
-* [Browser Support](#browser-support)
-* [Reporting Issues](#reporting-issues)
-* [Licensing](#licensing)
-* [Useful Links](#useful-links)
-* [Social Media](#social-media)
-* [Credits](#credits)
+* [Pengajuan](#pengajuan)
+* [Master Data](#master_data)
 
 ## Prerequisites
 
@@ -78,7 +41,7 @@ And Laravel: https://laravel.com/docs/10.x
 7. Run `php artisan storage:link` to create the storage symlink (if you are using **Vagrant** with **Homestead** for development, remember to ssh into your virtual machine and run the command from there).
 
 ## Usage
-Register a user or login with default user **admin@softui.com** and password **secret** from your database and start testing (make sure to run the migrations and seeders for these credentials to be available).
+Register a user or login with default user **admin@smkangkasa1margahayu.com** and password **secret** from your database and start testing (make sure to run the migrations and seeders for these credentials to be available).
 
 Besides the dashboard, the auth pages, the billing and table pages, there is also has an edit profile page. All the necessary files are installed out of the box and all the needed routes are added to `routes/web.php`. Keep in mind that all of the features can be viewed once you login using the credentials provided or by registering your own user. 
 
@@ -99,11 +62,8 @@ Besides the dashboard, the auth pages, the billing and table pages, there is als
 | --- | ---  | --- |
 | [<img src="https://github.com/dzerlangga/Pengajuan_PKL/blob/master/public/assets/img/example/jurusan.png" width="322" />](https://github.com/dzerlangga/Pengajuan_PKL/blob/master/public/assets/img/example/jurusan.png)  | [<img src="https://github.com/dzerlangga/Pengajuan_PKL/blob/master/public/assets/img/example/perusahaan.png" width="322" />](https://github.com/dzerlangga/Pengajuan_PKL/blob/master/public/assets/img/example/perusahaan.png)  | [<img src="https://github.com/dzerlangga/Pengajuan_PKL/blob/master/public/assets/img/example/program.png" width="322" />](https://github.com/dzerlangga/Pengajuan_PKL/blob/master/public/assets/img/example/program.png)
 
-## Documentation
-The documentation for the Soft UI Dashboard Laravel is hosted at our [website](https://soft-ui-dashboard-laravel.creative-tim.com/documentation/getting-started/overview.html).
-
 ### Login
-If you are not logged in you can only access this page or the Sign Up page. The default url takes you to the login page where you use the default credentials **admin@softui.com** with the password **secret**. Logging in is possible only with already existing credentials. For this to work you should have run the migrations.
+If you are not logged in you can only access this page or the Sign Up page. The default url takes you to the login page where you use the default credentials **admin@smkangkasa1margahayu.com** with the password **secret**. Logging in is possible only with already existing credentials. For this to work you should have run the migrations.
 
 The `App\Http\Controllers\SessionController` handles the logging in of an existing user.
 
@@ -124,83 +84,6 @@ The `App\Http\Controllers\SessionController` handles the logging in of an existi
 
             return back();
         }
-    }
-```
-
-### Register
-You can register as a user by filling in the name, email, role and password for your account. For your role you can choose between the Admin, Creator and Member. It is important to know that an admin user has access to all the pages and actions, can delete, add and edit another users, other roles, items, tags or categories; a creator user has acces to category, tag and item managemen, but can not add, edit or delete other users; a member user has access to the item management but can not take any action. You can do this by accessing the sign up page from the "**Sign Up**" button in the top navbar or by clicking the "**Sign Up**" button from the bottom of the log in form. Another simple way is adding **/register** in the url.
-
-The `App\Http\Controllers\RegisterController` handles the registration of a new user.
-
-```
-    public function store()
-    {
-        $attributes = request()->validate([
-            'name' => ['required', 'max:50'],
-            'email' => ['required', 'email', 'max:50', Rule::unique('users', 'email')],
-            'password' => ['required', 'min:5', 'max:20'],
-            'agreement' => ['accepted']
-        ]);
-        $attributes['password'] = bcrypt($attributes['password'] );
-
-        session()->flash('success', 'Your account has been created.');
-        $user = User::create($attributes);
-        Auth::login($user); 
-        return redirect('/dashboard');
-    }
-```
-
-### Forgot Password
-If a user forgets the account's password it is possible to reset the password. For this the user should click on the "**here**" under the login form or add **/login/forgot-password** in the url.
-
-The `App\Http\Controllers\ResetController` takes care of sending an email to the user where he can reset the password afterwards.
-
-```
-    public function sendEmail(Request $request)
-    {
-        $request->validate(['email' => 'required|email']);
-
-        $status = Password::sendResetLink(
-            $request->only('email')
-        );
-
-        return $status === Password::RESET_LINK_SENT
-                    ? back()->with(['status' => __($status)])
-                    : back()->withErrors(['email' => __($status)]);
-    }
-```
-
-### Reset Password
-The user who forgot the password gets an email on the account's email address. The user can access the reset password page by clicking the button found in the email. The link for resetting the password is available for 12 hours. The user must add the new password and confirm the password for his password to be updated. The user is redirected to the login page.
-
-The `App\Http\Controllers\ChangePasswordController` helps the user reset the password.
-
-```
-    public function changePassword(Request $request)
-    {
-        
-        $request->validate([
-            'token' => 'required',
-            'email' => 'required|email',
-            'password' => 'required|min:8|confirmed',
-        ]);
-    
-        $status = Password::reset(
-            $request->only('email', 'password', 'password_confirmation', 'token'),
-            function ($user, $password) {
-                $user->forceFill([
-                    'password' => Hash::make($password)
-                ])->setRememberToken(Str::random(60));
-    
-                $user->save();
-    
-                event(new PasswordReset($user));
-            }
-        );
-    
-        return $status === Password::PASSWORD_RESET
-                    ? redirect('/login')->with('status', __($status))
-                    : back()->withErrors(['email' => [__($status)]]);
     }
 ```
 
