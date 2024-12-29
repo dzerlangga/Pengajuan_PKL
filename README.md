@@ -91,9 +91,9 @@ Besides the dashboard, the auth pages, the billing and table pages, there is als
 | [![HTML](https://s3.amazonaws.com/creativetim_bucket/products/450/thumb/opt_sd_free_thumbnail.jpg)](https://www.creative-tim.com/product/soft-ui-dashboard) | [![Laravel](https://s3.amazonaws.com/creativetim_bucket/products/602/thumb/soft-ui-dashboard-laravel.jpg?1647531884)](https://www.creative-tim.com/product/soft-ui-dashboard-laravel)  | 
 
 ## Demo
-| Login | Dashboard |
-| --- | ---  |
-| [<img src="https://github.com/dzerlangga/Pengajuan_PKL/blob/master/public/assets/img/example/login.png" width="322" />](https://github.com/dzerlangga/Pengajuan_PKL/blob/master/public/assets/img/example/login.png)  | [<img src="https://github.com/dzerlangga/Pengajuan_PKL/blob/163f5e3ec4223841edd215582184b5e722ccb0a7/public/assets/img/example/dashboard.png" width="322" />](https://github.com/dzerlangga/Pengajuan_PKL/blob/163f5e3ec4223841edd215582184b5e722ccb0a7/public/assets/img/example/dashboard.png)
+| Login | Dashboard | Pengajuan |
+| --- | ---  | --- |
+| [<img src="https://github.com/dzerlangga/Pengajuan_PKL/blob/master/public/assets/img/example/login.png" width="322" />](https://github.com/dzerlangga/Pengajuan_PKL/blob/master/public/assets/img/example/login.png)  | [<img src="https://github.com/dzerlangga/Pengajuan_PKL/blob/master/public/assets/img/example/dashboard.png" width="322" />](https://github.com/dzerlangga/Pengajuan_PKL/blob/master/public/assets/img/example/dashboard.png)  | [<img src="https://github.com/dzerlangga/Pengajuan_PKL/blob/master/public/assets/img/example/pengajuan_surat" width="322" />](https://github.com/dzerlangga/Pengajuan_PKL/blob/master/public/assets/img/example/pengajuan_surat.png)
 
 | Forgot Password Page | Reset Password Page |
 | --- | --- |
