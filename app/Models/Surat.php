@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Surat extends Model
 {
     use HasFactory;
-    protected $fillable = ['alamat', 'jurusan_id', 'program_id', 'perusahaan', 'no_hp','status'];
+    protected $fillable = ['alamat', 'jurusan_id', 'program_id', 'perusahaan', 'no_hp','status', 'created_at'];
 
     public function anggota()
     {

@@ -10,7 +10,7 @@ class Jurusan extends Model
 
     use HasFactory;
     protected $fillable = [
-        'nama','singkatan'
+        'nama','singkatan', 'created_at'
     ];
 
     public function surat()

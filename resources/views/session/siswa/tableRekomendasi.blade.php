@@ -4,12 +4,6 @@
             <th class="text-uppercase text-secondary text-xxs font-weight-bolder" style="color:">
                 Perusahaan
             </th>
-            <th class="text-uppercase text-secondary text-xxs font-weight-bolder" style="color:">
-                Alamat
-            </th>
-            <th class="text-uppercase text-secondary text-xxs font-weight-bolder" style="color:">
-              Jurusan
-            </th>
         </tr>
     </thead>
     <tbody>
@@ -20,12 +14,6 @@
             <tr>
                 <td class="px-4">
                     <p class="text-xs font-weight-bold mb-0">{{ $perusahaan->nama }}</p>
-                </td>
-                <td class="px-4">
-                    <p class="text-xs font-weight-bold mb-0">{{ $perusahaan->alamat }}</p>
-                </td>
-                <td class="px-4">
-                    <p class="text-xs font-weight-bold mb-0"><a href="{{ $perusahaan->website }}" target="_blank" class="link-info fw-bold">Lihat Website</a></p>
                 </td>
             </tr>
             @endforeach

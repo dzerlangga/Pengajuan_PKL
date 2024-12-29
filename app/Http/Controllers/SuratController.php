@@ -17,15 +17,16 @@ class SuratController extends Controller
         $search = $request->input('search', '');
 
         $set_status = explode('-', $status);
-        $data = Surat::with('jurusan')->where('status', $set_status[1])->where('perusahaan', 'like', "%{$search}%")->orderBy('created_at', 'desc');
-        // $data = DB::table('surats as s')
-        //         ->join('jurusans as j', 's.jurusan_id', '=', 'j.id') // Pastikan alias tabel "j" digunakan
-        //         ->select('s.*', 'j.nama as jurusan_nama','j.singkatan as jurusan_singkatan') // Pastikan kolom "nama" benar
-        //         ->where('s.status', '=', $set_status[1])
-        //         ->where('s.perusahaan', 'like', "%{$search}%")
-        //         ->orWhere('j.nama', 'like', "%{$search}%")
-        //         ->orWhere('j.singkatan', 'like', "%{$search}%")
-        //         ->orderBy('created_at', 'desc');
+        $data = Surat::with('jurusan') // Memuat data relasi jurusan
+        ->where('status', '=', $set_status[1]) // Filter status
+        ->where(function ($query) use ($search) { // Grupkan kondisi lainnya
+            $query->where('perusahaan', 'like', "%{$search}%")
+                  ->orWhereHas('jurusan', function ($jurusanQuery) use ($search) {
+                      $jurusanQuery->where('nama', 'like', "%{$search}%")
+                                   ->orWhere('singkatan', 'like', "%{$search}%");
+                  });
+        })
+        ->orderBy('created_at', 'desc');
 
         if ($request->ajax()) {
             return view('persuratan.'.$set_status[1].'.table', ['datas'=>$data->paginate(5)])->render();
