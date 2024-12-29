@@ -95,9 +95,9 @@ Besides the dashboard, the auth pages, the billing and table pages, there is als
 | --- | ---  | --- |
 | [<img src="https://github.com/dzerlangga/Pengajuan_PKL/blob/master/public/assets/img/example/login.png" width="322" />](https://github.com/dzerlangga/Pengajuan_PKL/blob/master/public/assets/img/example/login.png)  | [<img src="https://github.com/dzerlangga/Pengajuan_PKL/blob/master/public/assets/img/example/dashboard.png" width="322" />](https://github.com/dzerlangga/Pengajuan_PKL/blob/master/public/assets/img/example/dashboard.png)  | [<img src="https://github.com/dzerlangga/Pengajuan_PKL/blob/master/public/assets/img/example/pengajuan_surat.png" width="322" />](https://github.com/dzerlangga/Pengajuan_PKL/blob/master/public/assets/img/example/pengajuan_surat.png)
 
-| Forgot Password Page | Reset Password Page |
-| --- | --- |
-| [<img src="https://github.com/creativetimofficial/public-assets/blob/master/soft-ui-design-system-laravel/Forgot-password.png" width="320" />](https://soft-ui-dashboard-laravel.creative-tim.com/login/forgot-password)  | [<img src="https://github.com/creativetimofficial/public-assets/blob/master/soft-ui-design-system-laravel/Login.png" width="312" />](https://soft-ui-dashboard-laravel.creative-tim.com/)
+| Jurusan | Perusahaan | Program |
+| --- | ---  | --- |
+| [<img src="https://github.com/dzerlangga/Pengajuan_PKL/blob/master/public/assets/img/example/jurusan.png" width="322" />](https://github.com/dzerlangga/Pengajuan_PKL/blob/master/public/assets/img/example/jurusan.png)  | [<img src="https://github.com/dzerlangga/Pengajuan_PKL/blob/master/public/assets/img/example/perusahaan.png" width="322" />](https://github.com/dzerlangga/Pengajuan_PKL/blob/master/public/assets/img/example/perusahaan.png)  | [<img src="https://github.com/dzerlangga/Pengajuan_PKL/blob/master/public/assets/img/example/program.png" width="322" />](https://github.com/dzerlangga/Pengajuan_PKL/blob/master/public/assets/img/example/program.png)
 
 ## Documentation
 The documentation for the Soft UI Dashboard Laravel is hosted at our [website](https://soft-ui-dashboard-laravel.creative-tim.com/documentation/getting-started/overview.html).
