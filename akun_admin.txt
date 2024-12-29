@@ -1,2 +1,2 @@
 email:"admin@smkangkasa1margahayu.com"
-pass:"$2y$10$RWPabNXFNg4XB.CfWIY/Yu/hwH7XfxqDfMMOSHtJWGFGrxQt7dyI." (admin)
+pass:"$2y$10$1xeaxW.KtiyVveTJZBd3bORgLUTtJ9ZfJvFMRgpLVNuFkm.Z2BMPC" (angkasaadmin)
